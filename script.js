@@ -1,3 +1,47 @@
+// Language Toggle Functionality
+let currentLang = 'ar';
+
+const langBtn = document.getElementById('langBtn');
+const html = document.documentElement;
+
+langBtn.addEventListener('click', () => {
+  currentLang = currentLang === 'ar' ? 'en' : 'ar';
+  updateLanguage();
+});
+
+function updateLanguage() {
+  // Update HTML attributes
+  html.setAttribute('lang', currentLang);
+  html.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+  
+  // Update button text
+  langBtn.textContent = currentLang === 'ar' ? 'English' : 'عربي';
+  
+  // Update all elements with data-ar and data-en attributes
+  document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+    el.textContent = el.getAttribute(`data-${currentLang}`);
+  });
+  
+  // Update font family
+  if (currentLang === 'en') {
+    document.body.style.fontFamily = "'Inter', sans-serif";
+  } else {
+    document.body.style.fontFamily = "'Tajawal', sans-serif";
+  }
+  
+  // Save preference
+  localStorage.setItem('festivalLang', currentLang);
+}
+
+// Load saved language on page load
+window.addEventListener('DOMContentLoaded', () => {
+  const savedLang = localStorage.getItem('festivalLang');
+  if (savedLang) {
+    currentLang = savedLang;
+    updateLanguage();
+  }
+});
+
 // Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
@@ -27,9 +71,8 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-// Observe all cards
 document.addEventListener('DOMContentLoaded', () => {
-  const cards = document.querySelectorAll('.stat-card, .vision-card, .zone-card, .week-card, .tier-card, .mechanic-card, .daily-item');
+  const cards = document.querySelectorAll('.stat-card, .vision-card, .zone-card, .tier-card');
   
   cards.forEach(card => {
     card.style.opacity = '0';
@@ -37,57 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
     card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(card);
   });
-
-  // Navbar background on scroll
-  const navbar = document.querySelector('.navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-      navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
-    } else {
-      navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-    }
-  });
 });
 
-// Button click handlers
-document.querySelectorAll('.btn-primary').forEach(btn => {
-  btn.addEventListener('click', function() {
-    // You can add modal or redirect here
-    alert('سيتم توجيهك إلى نموذج التسجيل قريباً');
-  });
-});
-
-// Counter animation for stats
-function animateCounter(element, target, duration = 2000) {
-  let start = 0;
-  const increment = target / (duration / 16);
-  
-  const timer = setInterval(() => {
-    start += increment;
-    if (start >= target) {
-      element.textContent = target;
-      clearInterval(timer);
-    } else {
-      element.textContent = Math.floor(start);
-    }
-  }, 16);
-}
-
-// Trigger counter animation when stats section is visible
-const statsSection = document.querySelector('.stats-section');
-let countersAnimated = false;
-
-const statsObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && !countersAnimated) {
-      countersAnimated = true;
-      // Add counter animation logic here if needed
-    }
-  });
-}, { threshold: 0.5 });
-
-if (statsSection) {
-  statsObserver.observe(statsSection);
-}
-
-console.log('🌴 مهرجان الأحساء للتسوق - الموقع جاهز!');
+console.log('🌴 Festival Website Loaded');

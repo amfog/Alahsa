@@ -3,90 +3,181 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>مهرجان الأحساء للتسوق 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <title>مهرجان الأحساء للتسوق 2026 | Al Ahsa Shopping Festival</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Language Toggle -->
+  <div class="lang-toggle">
+    <button id="langBtn" class="lang-btn">English</button>
+  </div>
+
+  <!-- Navigation -->
   <nav class="navbar">
     <div class="container nav-content">
-      <div class="logo">🌴 مهرجان الأحساء للتسوق</div>
+      <div class="logo" data-ar="🌴 مهرجان الأحساء للتسوق" data-en="🌴 Al Ahsa Shopping Festival">🌴 مهرجان الأحساء للتسوق</div>
       <ul class="nav-links">
-        <li><a href="#vision">الرؤية</a></li>
-        <li><a href="#zones">المناطق</a></li>
-        <li><a href="#timeline">الجدول</a></li>
-        <li><a href="#sponsors">الرعاة</a></li>
+        <li><a href="#vision" data-ar="الرؤية" data-en="Vision">الرؤية</a></li>
+        <li><a href="#zones" data-ar="المناطق" data-en="Zones">المناطق</a></li>
+        <li><a href="#timeline" data-ar="الجدول" data-en="Timeline">الجدول</a></li>
+        <li><a href="#sponsors" data-ar="الرعاة" data-en="Sponsors">الرعاة</a></li>
       </ul>
-      <button class="btn-primary">سجل الآن</button>
+      <button class="btn-primary" data-ar="سجل الآن" data-en="Register Now">سجل الآن</button>
     </div>
   </nav>
 
+  <!-- Hero Section -->
   <section class="hero">
     <div class="container">
-      <h1>🎉 مهرجان الأحساء للتسوق</h1>
-      <div class="hero-dates">10 يونيو — 10 يوليو 2026</div>
-      <p class="hero-tagline">منصة تنشيط اقتصادي تجمع العائلات، الشباب، والتجار في قلب الأحساء</p>
+      <h1 data-ar="🎉 مهرجان الأحساء للتسوق" data-en="🎉 Al Ahsa Shopping Festival">🎉 مهرجان الأحساء للتسوق</h1>
+      <div class="hero-dates" data-ar="10 يونيو — 10 يوليو 2026" data-en="June 10 — July 10, 2026">10 يونيو — 10 يوليو 2026</div>
+      <div class="hero-subtitle" data-ar="4 أسابيع • 5 أيام أسبوعياً • الخميس إلى الاثنين • 4 م – 11 م" data-en="4 Weeks • 5 Days/Week • Thu–Mon • 4 PM – 11 PM">4 أسابيع • 5 أيام أسبوعياً • الخميس إلى الاثنين • 4 م – 11 م</div>
+      <p class="hero-tagline" data-ar="منصة تنشيط اقتصادي تجمع العائلات، الشباب، والتجار في قلب الأحساء" data-en="An economic activation platform bringing families, youth, and merchants to the heart of Al Ahsa">منصة تنشيط اقتصادي تجمع العائلات، الشباب، والتجار في قلب الأحساء</p>
       <div class="cta-group">
-        <button class="btn-primary btn-large">احجز بوثةةةةة الآن</button>
-        <button class="btn-outline btn-large">عرض الرعاة</button>
+        <button class="btn-primary btn-large" data-ar="احجز بوثة الآن" data-en="Book a Booth Now">احجز بوثة الآن</button>
+        <button class="btn-outline btn-large" data-ar="عرض الرعاة" data-en="Sponsor Deck">عرض الرعاة</button>
       </div>
     </div>
   </section>
 
+  <!-- Stats Section -->
   <section class="stats-section">
     <div class="container">
       <div class="stats-grid">
-        <div class="stat-card"><div class="stat-number">3K–5K</div><div class="stat-label">زائر يومياً</div></div>
-        <div class="stat-card"><div class="stat-number">600K+ ر.س</div><div class="stat-label">قدرة شرائية</div></div>
-        <div class="stat-card"><div class="stat-number">6</div><div class="stat-label">مناطق تجربة</div></div>
-        <div class="stat-card"><div class="stat-number">50+</div><div class="stat-label">بوثةةةةة تجارية</div></div>
+        <div class="stat-card">
+          <div class="stat-number">3K–5K</div>
+          <div class="stat-label" data-ar="زائر يومياً" data-en="Daily Visitors">زائر يومياً</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">600K+ ر.س</div>
+          <div class="stat-label" data-ar="قدرة شرائية يومية" data-en="Daily Purchasing Power">قدرة شرائية يومية</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">6</div>
+          <div class="stat-label" data-ar="مناطق تجربة" data-en="Experience Zones">مناطق تجربة</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">50+</div>
+          <div class="stat-label" data-ar="بوثة تجارية" data-en="Merchant Booths">بوثة تجارية</div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Vision Section -->
   <section id="vision" class="section vision-section">
     <div class="container">
-      <h2 class="section-title">الرؤية الاستراتيجية</h2>
+      <h2 class="section-title" data-ar="الرؤية الاستراتيجية" data-en="Strategic Vision">الرؤية الاستراتيجية</h2>
       <div class="vision-grid">
-        <div class="vision-card"><div class="vision-icon">🏛️</div><h3>لماذا الأحساء؟</h3><p>مدينة تراثية يونيسكو • ثقافة عائلية • سوق صيفي غير مخدوم</p></div>
-        <div class="vision-card"><div class="vision-icon">☀️</div><h3>لماذا الصيف؟</h3><p>المدارس مغلقة • العائلات متواجدة • وقت مكوث طويل 4-11 م</p></div>
-        <div class="vision-card"><div class="vision-icon">👨‍👩‍👧</div><h3>لماذا العائلات؟</h3><p>العائلات تنفق أكثر • تبقى أطول • وتعود • 3,000 عائلة × 200 ر.س = 600K+ يومياً</p></div>
-        <div class="vision-card"><div class="vision-icon">🎮🛍️</div><h3>تسوق + ألعاب</h3><p>الألعاب تجلب الشباب • الشباب يجلبون العائلات • العائلات تتسوق</p></div>
+        <div class="vision-card">
+          <div class="vision-icon">🏛️</div>
+          <h3 data-ar="لماذا الأحساء؟" data-en="Why Al Ahsa?">لماذا الأحساء؟</h3>
+          <p data-ar="مدينة تراثية يونيسكو • ثقافة عائلية • سوق صيفي غير مخدوم" data-en="UNESCO heritage city • Family-first culture • Underserved summer market">مدينة تراثية يونيسكو • ثقافة عائلية • سوق صيفي غير مخدوم</p>
+        </div>
+        <div class="vision-card">
+          <div class="vision-icon">☀️</div>
+          <h3 data-ar="لماذا الصيف؟" data-en="Why Summer?">لماذا الصيف؟</h3>
+          <p data-ar="المدارس مغلقة • العائلات متواجدة • وقت مكوث طويل 4-11 م" data-en="Schools closed • Families home • Long dwell time 4-11 PM">المدارس مغلقة • العائلات متواجدة • وقت مكوث طويل 4-11 م</p>
+        </div>
+        <div class="vision-card">
+          <div class="vision-icon">👨‍👩‍👧</div>
+          <h3 data-ar="لماذا العائلات؟" data-en="Why Families?">لماذا العائلات؟</h3>
+          <p data-ar="العائلات تنفق أكثر • تبقى أطول • وتعود" data-en="Families spend more • Stay longer • Return again">العائلات تنفق أكثر • تبقى أطول • وتعود</p>
+        </div>
+        <div class="vision-card">
+          <div class="vision-icon">🎮🛍️</div>
+          <h3 data-ar="تسوق + ألعاب" data-en="Shopping + Gaming">تسوق + ألعاب</h3>
+          <p data-ar="الألعاب تجلب الشباب • الشباب يجلبون العائلات • العائلات تتسوق" data-en="Gaming brings youth • Youth bring families • Families shop">الألعاب تجلب الشباب • الشباب يجلبون العائلات • العائلات تتسوق</p>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Zones Section -->
   <section id="zones" class="section zones-section">
     <div class="container">
-      <h2 class="section-title">مناطق المهرجان الـ6</h2>
+      <h2 class="section-title" data-ar="مناطق المهرجان الـ6" data-en="6 Festival Zones">مناطق المهرجان الـ6</h2>
       <div class="zones-grid">
-        <div class="zone-card"><div class="zone-icon">🛍️</div><h3>سوق التسوق الكبير</h3><p>200+ بوثةةةةة • عروض فلاش يومية • دفع رقمي • جوائز فورية</p></div>
-        <div class="zone-card"><div class="zone-icon">👨‍👩‍👧</div><h3>منطقة العائلة</h3><p>ورش أطفال • عروض مسرحية • مسابقات عائلية • جوائز يومية</p></div>
-        <div class="zone-card"><div class="zone-icon">🍽️</div><h3>منطقة الطعام</h3><p>مطاعم محلية • شاحنات طعام • عروض طبخ • تجربة التمور</p></div>
-        <div class="zone-card"><div class="zone-icon">🎮</div><h3>منطقة الألعاب</h3><p>ألعاب مجانية • بطولات يومية • تحديات المؤثرين</p></div>
-        <div class="zone-card"><div class="zone-icon">🌴</div><h3>التراث والهوية</h3><p>ورش نخيل • فنون تقليدية • حكايات تراثية</p></div>
-        <div class="zone-card"><div class="zone-icon">🎤</div><h3>المسرح الرئيسي</h3><p>إعلانات العروض • جوائز • عروض حية • حفل ختامي</p></div>
+        <div class="zone-card">
+          <div class="zone-icon">🛍️</div>
+          <h3 data-ar="سوق التسوق الكبير" data-en="Mega Shopping Marketplace">سوق التسوق الكبير</h3>
+          <p data-ar="200+ بوثة • عروض فلاش يومية • دفع رقمي • جوائز فورية" data-en="200+ booths • Daily flash sales • Digital payments • Instant prizes">200+ بوثة • عروض فلاش يومية • دفع رقمي • جوائز فورية</p>
+        </div>
+        <div class="zone-card">
+          <div class="zone-icon">👨‍‍👧</div>
+          <h3 data-ar="منطقة العائلة" data-en="Family Experience Zone">منطقة العائلة</h3>
+          <p data-ar="ورش أطفال • عروض مسرحية • مسابقات عائلية • جوائز يومية" data-en="Kids workshops • Stage shows • Family competitions • Daily prizes">ورش أطفال • عروض مسرحية • مسابقات عائلية • جوائز يومية</p>
+        </div>
+        <div class="zone-card">
+          <div class="zone-icon">🍽️</div>
+          <h3 data-ar="منطقة الطعام" data-en="Food & Dining Zone">منطقة الطعام</h3>
+          <p data-ar="مطاعم محلية • شاحنات طعام • عروض طبخ • تجربة التمور" data-en="Local restaurants • Food trucks • Cooking shows • Date experience">مطاعم محلية • شاحنات طعام • عروض طبخ • تجربة التمور</p>
+        </div>
+        <div class="zone-card">
+          <div class="zone-icon">🎮</div>
+          <h3 data-ar="منطقة الألعاب" data-en="Gaming Traffic Driver">منطقة الألعاب</h3>
+          <p data-ar="ألعاب مجانية • بطولات يومية • تحديات المؤثرين" data-en="Free gaming • Daily tournaments • Influencer challenges">ألعاب مجانية • بطولات يومية • تحديات المؤثرين</p>
+        </div>
+        <div class="zone-card">
+          <div class="zone-icon">🌴</div>
+          <h3 data-ar="التراث والهوية" data-en="Heritage & Local Products">التراث والهوية</h3>
+          <p data-ar="ورش نخيل • فنون تقليدية • حكايات تراثية" data-en="Palm workshops • Traditional arts • Heritage storytelling">ورش نخيل • فنون تقليدية • حكايات تراثية</p>
+        </div>
+        <div class="zone-card">
+          <div class="zone-icon">🎤</div>
+          <h3 data-ar="المسرح الرئيسي" data-en="Main Stage">المسرح الرئيسي</h3>
+          <p data-ar="إعلانات العروض • جوائز • عروض حية • حفل ختامي" data-en="Flash sale announcements • Prizes • Live shows • Closing ceremony">إعلانات العروض • جوائز • عروض حية • حفل ختامي</p>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Sponsorship Tiers -->
   <section id="sponsors" class="section sponsors-section">
     <div class="container">
-      <h2 class="section-title">باقات الرعاية</h2>
+      <h2 class="section-title" data-ar="باقات الرعاية" data-en="Sponsorship Tiers">باقات الرعاية</h2>
       <div class="sponsor-tiers">
-        <div class="tier-card tier-title"><h3>الراعي الرئيسي</h3><div class="tier-price">حصرية</div><ul><li>تسمية المهرجان</li><li>2 بوثةةةةة مميزة</li><li>تسمية المسرح الرئيسي</li></ul><button class="btn-primary">تواصل</button></div>
-        <div class="tier-card"><h3>راعي منطقة</h3><div class="tier-price">مخصص</div><ul><li>تسمية منطقة كاملة</li><li>بوثةةةةة كبيرة</li><li>3 منشورات أسبوعية</li></ul><button class="btn-primary">تواصل</button></div>
-        <div class="tier-card"><h3>راعي نشاط</h3><div class="tier-price">مرن</div><ul><li>رعاية ساعة العروض</li><li>بوثةةةةة قياسية</li><li>2 منشور أسبوعي</li></ul><button class="btn-primary">تواصل</button></div>
-        <div class="tier-card"><h3>تاجر محلي</h3><div class="tier-price">من 5,000 ر.س</div><ul><li>بوثةةةةة في السوق</li><li>مشاركة في العروض</li><li>نظام مسح للعملاء</li></ul><button class="btn-primary">سجل الآن</button></div>
+        <div class="tier-card tier-title">
+          <h3 data-ar="الراعي الرئيسي" data-en="Title Sponsor">الراعي الرئيسي</h3>
+          <div class="tier-price" data-ar="حصرية" data-en="Exclusive">حصرية</div>
+          <ul>
+            <li data-ar="تسمية المهرجان" data-en="Festival naming rights">تسمية المهرجان</li>
+            <li data-ar="2 بوثة مميزة" data-en="2 premium booths">2 بوثة مميزة</li>
+            <li data-ar="تسمية المسرح الرئيسي" data-en="Main stage naming">تسمية المسرح الرئيسي</li>
+          </ul>
+          <button class="btn-primary" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</button>
+        </div>
+        <div class="tier-card">
+          <h3 data-ar="راعي منطقة" data-en="Zone Sponsor">راعي منطقة</h3>
+          <div class="tier-price" data-ar="مخصص" data-en="Custom">مخصص</div>
+          <ul>
+            <li data-ar="تسمية منطقة كاملة" data-en="Full zone naming">تسمية منطقة كاملة</li>
+            <li data-ar="بوثة كبيرة" data-en="Large booth">بوثة كبيرة</li>
+            <li data-ar="3 منشورات أسبوعية" data-en="3 social posts/week">3 منشورات أسبوعية</li>
+          </ul>
+          <button class="btn-primary" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</button>
+        </div>
+        <div class="tier-card">
+          <h3 data-ar="تاجر محلي" data-en="Local Trader">تاجر محلي</h3>
+          <div class="tier-price">من 5,000 ر.س</div>
+          <ul>
+            <li data-ar="بوثة في السوق" data-en="Marketplace booth">بوثة في السوق</li>
+            <li data-ar="مشاركة في العروض" data-en="Flash sale participation">مشاركة في العروض</li>
+            <li data-ar="نظام مسح للعملاء" data-en="QR customer capture">نظام مسح للعملاء</li>
+          </ul>
+          <button class="btn-primary" data-ar="سجل الآن" data-en="Register Now">سجل الآن</button>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-logo">🌴 مهرجان الأحساء للتسوق</div>
-      <p>📅 10 يونيو — 10 يوليو 2026 • 📍 الأحساء • ⏰ 4 م – 11 م</p>
-      <p style="margin-top:1rem;opacity:0.7">عرض تنفيذي • نسخة أولية</p>
+      <div class="footer-logo" data-ar="🌴 مهرجان الأحساء للتسوق" data-en="🌴 Al Ahsa Shopping Festival">🌴 مهرجان الأحساء للتسوق</div>
+      <p data-ar="📅 10 يونيو — 10 يوليو 2026 • 📍 الأحساء • ⏰ 4 م – 11 م" data-en="📅 June 10 – July 10, 2026 • 📍 Al Ahsa • ⏰ 4 PM – 11 PM">📅 10 يونيو — 10 يوليو 2026 • 📍 الأحساء • ⏰ 4 م – 11 م</p>
+      <p style="margin-top:1rem;opacity:0.7" data-ar="عرض تنفيذي • نسخة أولية" data-en="Executive Proposal • Draft Version">عرض تنفيذي • نسخة أولية</p>
     </div>
   </footer>
 
