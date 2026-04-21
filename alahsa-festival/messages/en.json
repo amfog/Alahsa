@@ -1,0 +1,61 @@
+{
+  "Hero": {
+    "title": "🎉 Al Ahsa Shopping Festival",
+    "dates": "June 10 — July 10, 2026",
+    "subtitle": "4 Weeks • 5 Days/Week • Thu–Mon • 4 PM – 11 PM",
+    "tagline": "An economic activation platform bringing families, youth, and merchants to the heart of Al Ahsa",
+    "ctaPrimary": "Book a Booth Now",
+    "ctaSecondary": "Sponsor Deck"
+  },
+  "Stats": {
+    "dailyVisitors": "Daily Visitors",
+    "purchasingPower": "Daily Purchasing Power",
+    "experienceZones": "Experience Zones",
+    "merchantBooths": "Merchant Booths"
+  },
+  "Vision": {
+    "title": "Strategic Vision",
+    "whyAlAhsa": "Why Al Ahsa?",
+    "whyAlAhsaDesc": "UNESCO heritage city • Family-first culture • Underserved summer market",
+    "whySummer": "Why Summer?",
+    "whySummerDesc": "Schools closed • Families home • Long dwell time 4-11 PM",
+    "whyFamilies": "Why Families?",
+    "whyFamiliesDesc": "Families spend more • Stay longer • Return again",
+    "whyShoppingGaming": "Shopping + Gaming",
+    "whyShoppingGamingDesc": "Gaming brings youth • Youth bring families • Families shop"
+  },
+  "Zones": {
+    "title": "6 Festival Zones",
+    "marketplace": "Mega Shopping Marketplace",
+    "marketplaceDesc": "200+ booths • Daily flash sales • Digital payments • Instant prizes",
+    "family": "Family Experience Zone",
+    "familyDesc": "Kids workshops • Stage shows • Family competitions • Daily prizes",
+    "food": "Food & Dining Zone",
+    "foodDesc": "Local restaurants • Food trucks • Cooking shows • Date experience",
+    "gaming": "Gaming Traffic Driver",
+    "gamingDesc": "Free gaming • Daily tournaments • Influencer challenges",
+    "heritage": "Heritage & Local Products",
+    "heritageDesc": "Palm workshops • Traditional arts • Heritage storytelling",
+    "stage": "Main Stage",
+    "stageDesc": "Flash sale announcements • Prizes • Live shows • Closing ceremony"
+  },
+  "Sponsors": {
+    "title": "Sponsorship Tiers",
+    "titleSponsor": "Title Sponsor",
+    "zoneSponsor": "Zone Sponsor",
+    "localTrader": "Local Trader",
+    "exclusive": "Exclusive",
+    "custom": "Custom",
+    "from5k": "From SAR 5,000",
+    "contact": "Contact Us",
+    "register": "Register Now"
+  },
+  "Footer": {
+    "dates": "📅 June 10 – July 10, 2026 • 📍 Al Ahsa • ⏰ 4 PM – 11 PM",
+    "note": "Executive Proposal • Draft Version"
+  },
+  "Common": {
+    "langSwitch": "عربي",
+    "registerNow": "Register Now"
+  }
+}
