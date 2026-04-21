@@ -1,95 +1,95 @@
-cat << 'EOF' > script.js
-// Smooth scroll for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
-});
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>مهرجان الأحساء للتسوق 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-content">
+      <div class="logo">🌴 مهرجان الأحساء للتسوق</div>
+      <ul class="nav-links">
+        <li><a href="#vision">الرؤية</a></li>
+        <li><a href="#zones">المناطق</a></li>
+        <li><a href="#timeline">الجدول</a></li>
+        <li><a href="#sponsors">الرعاة</a></li>
+      </ul>
+      <button class="btn-primary">سجل الآن</button>
+    </div>
+  </nav>
 
-// Fade-in animation on scroll
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
-};
+  <section class="hero">
+    <div class="container">
+      <h1>🎉 مهرجان الأحساء للتسوق</h1>
+      <div class="hero-dates">10 يونيو — 10 يوليو 2026</div>
+      <p class="hero-tagline">منصة تنشيط اقتصادي تجمع العائلات، الشباب، والتجار في قلب الأحساء</p>
+      <div class="cta-group">
+        <button class="btn-primary btn-large">احجز بوثة الآن</button>
+        <button class="btn-outline btn-large">عرض الرعاة</button>
+      </div>
+    </div>
+  </section>
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-}, observerOptions);
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-number">3K–5K</div><div class="stat-label">زائر يومياً</div></div>
+        <div class="stat-card"><div class="stat-number">600K+ ر.س</div><div class="stat-label">قدرة شرائية</div></div>
+        <div class="stat-card"><div class="stat-number">6</div><div class="stat-label">مناطق تجربة</div></div>
+        <div class="stat-card"><div class="stat-number">50+</div><div class="stat-label">بوثة تجارية</div></div>
+      </div>
+    </div>
+  </section>
 
-// Observe all cards
-document.addEventListener('DOMContentLoaded', () => {
-  const cards = document.querySelectorAll('.stat-card, .vision-card, .zone-card, .week-card, .tier-card, .mechanic-card, .daily-item');
-  
-  cards.forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(card);
-  });
+  <section id="vision" class="section vision-section">
+    <div class="container">
+      <h2 class="section-title">الرؤية الاستراتيجية</h2>
+      <div class="vision-grid">
+        <div class="vision-card"><div class="vision-icon">🏛️</div><h3>لماذا الأحساء؟</h3><p>مدينة تراثية يونيسكو • ثقافة عائلية • سوق صيفي غير مخدوم</p></div>
+        <div class="vision-card"><div class="vision-icon">☀️</div><h3>لماذا الصيف؟</h3><p>المدارس مغلقة • العائلات متواجدة • وقت مكوث طويل 4-11 م</p></div>
+        <div class="vision-card"><div class="vision-icon">👨‍👩‍👧</div><h3>لماذا العائلات؟</h3><p>العائلات تنفق أكثر • تبقى أطول • وتعود • 3,000 عائلة × 200 ر.س = 600K+ يومياً</p></div>
+        <div class="vision-card"><div class="vision-icon">🎮🛍️</div><h3>تسوق + ألعاب</h3><p>الألعاب تجلب الشباب • الشباب يجلبون العائلات • العائلات تتسوق</p></div>
+      </div>
+    </div>
+  </section>
 
-  // Navbar background on scroll
-  const navbar = document.querySelector('.navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-      navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
-    } else {
-      navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-    }
-  });
-});
+  <section id="zones" class="section zones-section">
+    <div class="container">
+      <h2 class="section-title">مناطق المهرجان الـ6</h2>
+      <div class="zones-grid">
+        <div class="zone-card"><div class="zone-icon">🛍️</div><h3>سوق التسوق الكبير</h3><p>200+ بوثة • عروض فلاش يومية • دفع رقمي • جوائز فورية</p></div>
+        <div class="zone-card"><div class="zone-icon">👨‍👩‍👧</div><h3>منطقة العائلة</h3><p>ورش أطفال • عروض مسرحية • مسابقات عائلية • جوائز يومية</p></div>
+        <div class="zone-card"><div class="zone-icon">🍽️</div><h3>منطقة الطعام</h3><p>مطاعم محلية • شاحنات طعام • عروض طبخ • تجربة التمور</p></div>
+        <div class="zone-card"><div class="zone-icon">🎮</div><h3>منطقة الألعاب</h3><p>ألعاب مجانية • بطولات يومية • تحديات المؤثرين</p></div>
+        <div class="zone-card"><div class="zone-icon">🌴</div><h3>التراث والهوية</h3><p>ورش نخيل • فنون تقليدية • حكايات تراثية</p></div>
+        <div class="zone-card"><div class="zone-icon">🎤</div><h3>المسرح الرئيسي</h3><p>إعلانات العروض • جوائز • عروض حية • حفل ختامي</p></div>
+      </div>
+    </div>
+  </section>
 
-// Button click handlers
-document.querySelectorAll('.btn-primary').forEach(btn => {
-  btn.addEventListener('click', function() {
-    // You can add modal or redirect here
-    alert('سيتم توجيهك إلى نموذج التسجيل قريباً');
-  });
-});
+  <section id="sponsors" class="section sponsors-section">
+    <div class="container">
+      <h2 class="section-title">باقات الرعاية</h2>
+      <div class="sponsor-tiers">
+        <div class="tier-card tier-title"><h3>الراعي الرئيسي</h3><div class="tier-price">حصرية</div><ul><li>تسمية المهرجان</li><li>2 بوثة مميزة</li><li>تسمية المسرح الرئيسي</li></ul><button class="btn-primary">تواصل</button></div>
+        <div class="tier-card"><h3>راعي منطقة</h3><div class="tier-price">مخصص</div><ul><li>تسمية منطقة كاملة</li><li>بوثة كبيرة</li><li>3 منشورات أسبوعية</li></ul><button class="btn-primary">تواصل</button></div>
+        <div class="tier-card"><h3>راعي نشاط</h3><div class="tier-price">مرن</div><ul><li>رعاية ساعة العروض</li><li>بوثة قياسية</li><li>2 منشور أسبوعي</li></ul><button class="btn-primary">تواصل</button></div>
+        <div class="tier-card"><h3>تاجر محلي</h3><div class="tier-price">من 5,000 ر.س</div><ul><li>بوثة في السوق</li><li>مشاركة في العروض</li><li>نظام مسح للعملاء</li></ul><button class="btn-primary">سجل الآن</button></div>
+      </div>
+    </div>
+  </section>
 
-// Counter animation for stats
-function animateCounter(element, target, duration = 2000) {
-  let start = 0;
-  const increment = target / (duration / 16);
-  
-  const timer = setInterval(() => {
-    start += increment;
-    if (start >= target) {
-      element.textContent = target;
-      clearInterval(timer);
-    } else {
-      element.textContent = Math.floor(start);
-    }
-  }, 16);
-}
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">🌴 مهرجان الأحساء للتسوق</div>
+      <p>📅 10 يونيو — 10 يوليو 2026 • 📍 الأحساء • ⏰ 4 م – 11 م</p>
+      <p style="margin-top:1rem;opacity:0.7">عرض تنفيذي • نسخة أولية</p>
+    </div>
+  </footer>
 
-// Trigger counter animation when stats section is visible
-const statsSection = document.querySelector('.stats-section');
-let countersAnimated = false;
-
-const statsObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && !countersAnimated) {
-      countersAnimated = true;
-      // Add counter animation logic here if needed
-    }
-  });
-}, { threshold: 0.5 });
-
-if (statsSection) {
-  statsObserver.observe(statsSection);
-}
-
-console.log('🌴 مهرجان الأحساء للتسوق - الموقع جاهز!');
-EOF
+  <script src="script.js"></script>
+</body>
+</html>
