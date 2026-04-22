@@ -1,8 +1,6 @@
 import Link from 'next/link';
 
-// Server Component - must be async to await params
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
-  // Await the params Promise
   const { locale } = await params;
   const isAr = locale === 'ar';
   
@@ -13,12 +11,26 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         <div className="font-bold text-2xl text-[#2E5C3A]">
           {isAr ? '🌴 مهرجان الأحساء للتسوق' : '🌴 Al Ahsa Shopping Festival'}
         </div>
-        <Link 
-          href={`/${locale}/sponsors`}
-          className="text-[#2E5C3A] font-bold hover:underline"
-        >
-          {isAr ? 'عرض الرعاة' : 'View Sponsors'}
-        </Link>
+        <div className="flex gap-6 text-sm md:text-base">
+          <Link 
+            href={`/${locale}/event`}
+            className="text-[#2E5C3A] font-bold hover:underline"
+          >
+            {isAr ? 'عن المهرجان' : 'About'}
+          </Link>
+          <Link 
+            href={`/${locale}/schedule`}
+            className="text-[#2E5C3A] font-bold hover:underline"
+          >
+            {isAr ? 'الجدول' : 'Schedule'}
+          </Link>
+          <Link 
+            href={`/${locale}/sponsors`}
+            className="text-[#2E5C3A] font-bold hover:underline"
+          >
+            {isAr ? 'الرعاة' : 'Sponsors'}
+          </Link>
+        </div>
       </nav>
 
       {/* Hero Section */}
@@ -43,10 +55,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             {isAr ? 'احجز بوث الآن' : 'Book a Booth Now'}
           </Link>
           <Link 
-            href={`/${locale}/sponsors`}
+            href={`/${locale}/schedule`}
             className="bg-[#2E5C3A] text-white px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition shadow-lg"
           >
-            {isAr ? 'عرض الرعاة' : 'View Sponsors'}
+            {isAr ? 'شاهد الجدول' : 'View Schedule'}
           </Link>
         </div>
       </section>
@@ -63,8 +75,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             <div className="text-sm opacity-80">{isAr ? 'قدرة شرائية يومية' : 'Daily Purchasing Power'}</div>
           </div>
           <div>
-            <div className="text-3xl font-black text-[#D4AF37]">6</div>
-            <div className="text-sm opacity-80">{isAr ? 'مناطق تجربة' : 'Experience Zones'}</div>
+            <div className="text-3xl font-black text-[#D4AF37]">4</div>
+            <div className="text-sm opacity-80">{isAr ? 'أسابيع من المرح' : 'Weeks of Fun'}</div>
           </div>
           <div>
             <div className="text-3xl font-black text-[#D4AF37]">50+</div>
