@@ -86,8 +86,14 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
       
       {/* Footer */}
-      <footer className="text-center py-10 text-gray-500 text-sm">
-        {isAr ? '© 2026 مهرجان الأحساء للتسوق. جميع الحقوق محفوظة.' : '© 2026 Al Ahsa Shopping Festival. All rights reserved.'}
+      <footer className="text-center py-10 text-gray-500 text-sm bg-[#f8f5f0] border-t border-gray-200">
+        <p className="mb-2">{isAr ? '© 2026 مهرجان الأحساء للتسوق. جميع الحقوق محفوظة.' : '© 2026 Al Ahsa Shopping Festival. All rights reserved.'}</p>
+        <p>
+          {isAr ? 'صُنع بواسطة' : 'Powered by'} {' '}
+          <a href="https://nexaro.tech" target="_blank" className="text-[#D4AF37] font-bold hover:underline">
+            Nexaro.tech
+          </a>
+        </p>
       </footer>
     </main>
   );
