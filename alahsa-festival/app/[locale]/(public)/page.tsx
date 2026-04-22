@@ -40,7 +40,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             href={`/${locale}/apply`}
             className="bg-[#D4AF37] text-[#1a1a2e] px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition shadow-lg"
           >
-            {isAr ? 'احجز بوثة الآن' : 'Book a Booth Now'}
+            {isAr ? 'احجز بوث الآن' : 'Book a Booth Now'}
           </Link>
           <Link 
             href={`/${locale}/sponsors`}
