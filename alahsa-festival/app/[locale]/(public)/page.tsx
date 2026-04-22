@@ -1,7 +1,10 @@
 import Link from 'next/link';
 
-export default function Home({ params }: { params: { locale: string } }) {
-  const isAr = params.locale === 'ar';
+// Server Component - must be async to await params
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  // Await the params Promise
+  const { locale } = await params;
+  const isAr = locale === 'ar';
   
   return (
     <main className="min-h-screen bg-white" dir={isAr ? 'rtl' : 'ltr'}>
@@ -11,7 +14,7 @@ export default function Home({ params }: { params: { locale: string } }) {
           {isAr ? '🌴 مهرجان الأحساء للتسوق' : '🌴 Al Ahsa Shopping Festival'}
         </div>
         <Link 
-          href={`/${params.locale}/sponsors`}
+          href={`/${locale}/sponsors`}
           className="text-[#2E5C3A] font-bold hover:underline"
         >
           {isAr ? 'عرض الرعاة' : 'View Sponsors'}
@@ -34,13 +37,13 @@ export default function Home({ params }: { params: { locale: string } }) {
         
         <div className="flex flex-col md:flex-row justify-center gap-4">
           <Link 
-            href={`/${params.locale}/apply`}
+            href={`/${locale}/apply`}
             className="bg-[#D4AF37] text-[#1a1a2e] px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition shadow-lg"
           >
             {isAr ? 'احجز بوثة الآن' : 'Book a Booth Now'}
           </Link>
           <Link 
-            href={`/${params.locale}/sponsors`}
+            href={`/${locale}/sponsors`}
             className="bg-[#2E5C3A] text-white px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition shadow-lg"
           >
             {isAr ? 'عرض الرعاة' : 'View Sponsors'}

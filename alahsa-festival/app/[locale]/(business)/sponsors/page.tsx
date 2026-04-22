@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, use } from 'react';
 import Link from 'next/link';
 
 const translations = {
@@ -62,8 +62,9 @@ const translations = {
   }
 };
 
-export default function SponsorsPage({ params }: { params: { locale: string } }) {
-  const [lang, setLang] = useState<'ar' | 'en'>(params.locale as 'ar' | 'en');
+export default function SponsorsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const resolvedParams = use(params);
+  const [lang, setLang] = useState<'ar' | 'en'>(resolvedParams.locale as 'ar' | 'en');
   const t = translations[lang];
   const isAr = lang === 'ar';
 
@@ -99,7 +100,7 @@ export default function SponsorsPage({ params }: { params: { locale: string } })
                 ))}
               </ul>
               <a 
-                href={isAr ? pkg.link : pkg.link.replace('/ar', '/en')} 
+                href={pkg.link} 
                 className="block w-full text-center bg-[#2E5C3A] text-white py-3 rounded-xl font-bold hover:bg-[#1a3a23] transition"
               >
                 {pkg.action}

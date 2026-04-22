@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, use } from 'react';
 import Link from 'next/link';
 
 const translations = {
@@ -46,8 +46,9 @@ const translations = {
   },
 };
 
-export default function ApplyPage({ params }: { params: { locale: string } }) {
-  const [lang, setLang] = useState<'ar' | 'en'>(params.locale as 'ar' | 'en');
+export default function ApplyPage({ params }: { params: Promise<{ locale: string }> }) {
+  const resolvedParams = use(params);
+  const [lang, setLang] = useState<'ar' | 'en'>(resolvedParams.locale as 'ar' | 'en');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const t = translations[lang];
   const isAr = lang === 'ar';
