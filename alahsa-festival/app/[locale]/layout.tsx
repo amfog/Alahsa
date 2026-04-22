@@ -1,5 +1,5 @@
 import { Tajawal, Inter } from 'next/font/google';
-import './globals.css';
+import '../globals.css';
 
 const tajawal = Tajawal({
   weight: ['400', '500', '700', '800', '900'],
@@ -19,7 +19,7 @@ export const metadata = {
   description: '10 يونيو — 10 يوليو 2026',
 };
 
-export default function RootLayout({
+export default function LocaleLayout({
   children,
 }: {
   children: React.ReactNode;

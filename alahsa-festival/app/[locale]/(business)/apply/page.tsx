@@ -1,0 +1,148 @@
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+
+const translations = {
+  ar: {
+    title: 'تسجيل تاجر / راعي',
+    subtitle: 'احجز بوثتك في مهرجان الأحساء للتسوق 2026',
+    form: {
+      companyName: 'اسم الشركة / المتجر',
+      contactName: 'اسم المسؤول',
+      email: 'البريد الإلكتروني',
+      phone: 'رقم الجوال',
+      tier: 'نوع المشاركة',
+      tierOptions: ['تاجر محلي (من 5,000 ر.س)', 'راعي منطقة (مخصص)', 'الراعي الرئيسي (حصرية)'],
+      boothSize: 'حجم البوثة المطلوب',
+      boothOptions: ['3x3 م (قياسي)', '3x6 م (كبير)', '6x6 م (مميز)'],
+      description: 'نبذة عن منتجاتك/خدماتك',
+      submit: 'إرسال الطلب',
+      success: 'تم استلام طلبك! سنتواصل معك خلال 48 ساعة.',
+    },
+    back: '← العودة للرئيسية',
+  },
+  en: {
+    title: 'Merchant / Sponsor Registration',
+    subtitle: 'Book your booth at Al Ahsa Shopping Festival 2026',
+    form: {
+      companyName: 'Company / Store Name',
+      contactName: 'Contact Person',
+      email: 'Email Address',
+      phone: 'Phone Number',
+      tier: 'Participation Tier',
+      tierOptions: ['Local Trader (From SAR 5,000)', 'Zone Sponsor (Custom)', 'Title Sponsor (Exclusive)'],
+      boothSize: 'Booth Size',
+      boothOptions: ['3x3m (Standard)', '3x6m (Large)', '6x6m (Premium)'],
+      description: 'Brief description of your products/services',
+      submit: 'Submit Application',
+      success: 'Application received! We will contact you within 48 hours.',
+    },
+    back: '← Back to Home',
+  },
+};
+
+export default function ApplyPage({ params }: { params: { locale: string } }) {
+  const [lang, setLang] = useState<'ar' | 'en'>(params.locale as 'ar' | 'en');
+  const [submitted, setSubmitted] = useState(false);
+  const t = translations[lang];
+  const isAr = lang === 'ar';
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // TODO: Connect to Supabase API route
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 5000);
+  };
+
+  const toggleLang = () => {
+    setLang(lang === 'ar' ? 'en' : 'ar');
+  };
+
+  return (
+    <main className="min-h-screen py-20" dir={isAr ? 'rtl' : 'ltr'}>
+      {/* Language Toggle */}
+      <div className={`fixed top-4 ${isAr ? 'left-4' : 'right-4'} z-50`}>
+        <button onClick={toggleLang} className="bg-[#D4AF37] text-[#1a1a2e] px-4 py-2 rounded-full font-bold shadow-md hover:scale-105 transition">
+          {lang === 'ar' ? 'English' : 'عربي'}
+        </button>
+      </div>
+
+      <div className="max-w-2xl mx-auto px-4">
+        {/* Back Link */}
+        <Link href={`/${lang}`} className="text-[#2E5C3A] font-bold hover:underline mb-8 inline-block">
+          {t.back}
+        </Link>
+
+        {/* Header */}
+        <div className="text-center mb-10">
+          <h1 className="text-3xl font-black text-[#2E5C3A] mb-2">{t.title}</h1>
+          <p className="text-gray-600">{t.subtitle}</p>
+        </div>
+
+        {/* Success Message */}
+        {submitted && (
+          <div className="bg-green-100 border border-green-400 text-green-700 px-6 py-4 rounded-xl mb-6 text-center">
+            ✅ {t.form.success}
+          </div>
+        )}
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-lg space-y-6">
+          <div>
+            <label className="block text-sm font-bold text-[#2E5C3A] mb-2">{t.form.companyName}</label>
+            <input type="text" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent" />
+          </div>
+
+          <div>
+            <label className="block text-sm font-bold text-[#2E5C3A] mb-2">{t.form.contactName}</label>
+            <input type="text" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent" />
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-bold text-[#2E5C3A] mb-2">{t.form.email}</label>
+              <input type="email" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent" />
+            </div>
+            <div>
+              <label className="block text-sm font-bold text-[#2E5C3A] mb-2">{t.form.phone}</label>
+              <input type="tel" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent" />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-bold text-[#2E5C3A] mb-2">{t.form.tier}</label>
+            <select required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent">
+              {t.form.tierOptions.map((opt, i) => (
+                <option key={i} value={opt}>{opt}</option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-bold text-[#2E5C3A] mb-2">{t.form.boothSize}</label>
+            <select required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent">
+              {t.form.boothOptions.map((opt, i) => (
+                <option key={i} value={opt}>{opt}</option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-bold text-[#2E5C3A] mb-2">{t.form.description}</label>
+            <textarea rows={4} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent" />
+          </div>
+
+          <button type="submit" className="w-full bg-[#D4AF37] text-[#1a1a2e] py-4 rounded-xl font-bold text-lg hover:scale-105 transition shadow-lg">
+            {t.form.submit}
+          </button>
+        </form>
+
+        {/* Footer Note */}
+        <p className="text-center text-gray-500 text-sm mt-8">
+          {isAr ? 'جميع الحقوق محفوظة © مهرجان الأحساء للتسوق 2026' : '© Al Ahsa Shopping Festival 2026. All rights reserved.'}
+        </p>
+      </div>
+    </main>
+  );
+}
