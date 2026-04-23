@@ -166,12 +166,17 @@ export default function ApplyPage({ params }: { params: Promise<{ locale: string
           </button>
         </form>
 
-        <p className="text-center text-gray-500 text-sm mt-8">
-          {isAr ? 'تصميم وتطوير' : 'Designed & Developed by'} {' '}
-          <a href="https://nexaro.tech" target="_blank" className="text-[#D4AF37] font-bold hover:underline">
-            Nexaro.tech
-          </a>
-        </p>
+        {/* Footer */}
+        <div className="text-center mt-8 text-gray-500 text-sm bg-[#f8f5f0] py-4 rounded-xl border border-gray-200">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-2 mb-1">
+            <span>{isAr ? 'الموقع بواسطة' : 'Website by'} <a href="https://nexaro.tech" target="_blank" rel="noopener noreferrer" className="text-[#D4AF37] font-bold hover:underline">Nexaro.tech</a></span>
+            <span className="hidden md:inline text-gray-300">|</span>
+            <span>{isAr ? 'الفعالية بواسطة' : 'Event by'} <span className="text-[#2E5C3A] font-bold">The Vicious Esports</span></span>
+          </div>
+          <p className="text-xs opacity-70">
+            {isAr ? '© 2026 مهرجان الأحساء للتسوق. جميع الحقوق محفوظة.' : '© 2026 Al Ahsa Shopping Festival. All rights reserved.'}
+          </p>
+        </div>
       </div>
     </main>
   );
