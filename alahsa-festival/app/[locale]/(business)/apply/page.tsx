@@ -79,6 +79,7 @@ export default function ApplyPage({ params }: { params: Promise<{ locale: string
       setStatus('success');
       (e.target as HTMLFormElement).reset();
     } catch (err) {
+      console.error(err);
       setStatus('error');
     }
   };
@@ -166,7 +167,10 @@ export default function ApplyPage({ params }: { params: Promise<{ locale: string
         </form>
 
         <p className="text-center text-gray-500 text-sm mt-8">
-          {isAr ? 'جميع الحقوق محفوظة © مهرجان الأحساء للتسوق 2026' : '© Al Ahsa Shopping Festival 2026. All rights reserved.'}
+          {isAr ? 'تصميم وتطوير' : 'Designed & Developed by'} {' '}
+          <a href="https://nexaro.tech" target="_blank" className="text-[#D4AF37] font-bold hover:underline">
+            Nexaro.tech
+          </a>
         </p>
       </div>
     </main>

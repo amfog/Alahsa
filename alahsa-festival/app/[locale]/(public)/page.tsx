@@ -12,24 +12,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           {isAr ? '🌴 مهرجان الأحساء للتسوق' : '🌴 Al Ahsa Shopping Festival'}
         </div>
         <div className="flex gap-6 text-sm md:text-base">
-          <Link 
-            href={`/${locale}/event`}
-            className="text-[#2E5C3A] font-bold hover:underline"
-          >
-            {isAr ? 'عن المهرجان' : 'About'}
-          </Link>
-          <Link 
-            href={`/${locale}/schedule`}
-            className="text-[#2E5C3A] font-bold hover:underline"
-          >
-            {isAr ? 'الجدول' : 'Schedule'}
-          </Link>
-          <Link 
-            href={`/${locale}/sponsors`}
-            className="text-[#2E5C3A] font-bold hover:underline"
-          >
-            {isAr ? 'الرعاة' : 'Sponsors'}
-          </Link>
+          <Link href={`/${locale}/event`} className="text-[#2E5C3A] font-bold hover:underline">{isAr ? 'عن المهرجان' : 'About'}</Link>
+          <Link href={`/${locale}/schedule`} className="text-[#2E5C3A] font-bold hover:underline">{isAr ? 'الجدول' : 'Schedule'}</Link>
+          <Link href={`/${locale}/sponsors`} className="text-[#2E5C3A] font-bold hover:underline">{isAr ? 'الرعاة' : 'Sponsors'}</Link>
         </div>
       </nav>
 
@@ -48,16 +33,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </p>
         
         <div className="flex flex-col md:flex-row justify-center gap-4">
-          <Link 
-            href={`/${locale}/apply`}
-            className="bg-[#D4AF37] text-[#1a1a2e] px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition shadow-lg"
-          >
+          <Link href={`/${locale}/apply`} className="bg-[#D4AF37] text-[#1a1a2e] px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition shadow-lg">
             {isAr ? 'احجز بوث الآن' : 'Book a Booth Now'}
           </Link>
-          <Link 
-            href={`/${locale}/schedule`}
-            className="bg-[#2E5C3A] text-white px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition shadow-lg"
-          >
+          <Link href={`/${locale}/schedule`} className="bg-[#2E5C3A] text-white px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition shadow-lg">
             {isAr ? 'شاهد الجدول' : 'View Schedule'}
           </Link>
         </div>
@@ -89,8 +68,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <footer className="text-center py-10 text-gray-500 text-sm bg-[#f8f5f0] border-t border-gray-200">
         <p className="mb-2">{isAr ? '© 2026 مهرجان الأحساء للتسوق. جميع الحقوق محفوظة.' : '© 2026 Al Ahsa Shopping Festival. All rights reserved.'}</p>
         <p>
-          {isAr ? 'صُنع بواسطة' : 'Powered by'} {' '}
-          <a href="https://nexaro.tech" target="_blank" className="text-[#D4AF37] font-bold hover:underline">
+          {isAr ? 'تصميم وتطوير' : 'Designed & Developed by'} {' '}
+          <a href="https://nexaro.tech" target="_blank" rel="noopener noreferrer" className="text-[#D4AF37] font-bold hover:underline">
             Nexaro.tech
           </a>
         </p>
