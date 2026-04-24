@@ -1,430 +1,328 @@
 'use client';
 
-import { useState, use } from 'react';
+import { use } from 'react';
 import Link from 'next/link';
 
 const translations = {
   ar: {
     title: 'باقات الرعاية',
-    subtitle: 'شراكة استراتيجية مع مهرجان الأحساء للتسوق 2026',
-    economicImpact: {
+    subtitle: 'انضم إلى أكبر منصة تنشيط اقتصادي في الأحساء. كل شريك يحصل على عائد استثمار قابل للقياس.',
+    impact: {
       title: 'الأثر الاقتصادي المتوقع',
-      visitors: '3K–5K زائر يومياً',
-      purchasing: '600K+ ر.س قدرة شرائية يومية',
-      booths: '50+ بوث تجارية',
-      revenue: '2M+ ر.س إيرادات متوقعة',
-      weeks: '4 أسابيع • 5 أيام/أسبوع'
-    },
-    whySponsor: {
-      title: 'لماذا ترعى المهرجان؟',
-      reasons: [
-        'الوصول لـ 3,000-5,000 زائر يومياً',
-        'قدرة شرائية يومية تتجاوز 600 ألف ريال',
-        'منصة تنشيط اقتصادي متكاملة',
-        'تواجد عائلي مكثف (4 م - 11 م)',
-        'تغطية إعلامية ورقمية واسعة',
-        'فرص بيع مباشرة وتفاعل مع العملاء'
-      ]
+      visitors: '١٥٠،٠٠٠+ زائر',
+      spending: '٦٠٠K+ ر.س قدرة شرائية يومية',
+      merchants: '٣٠٠+ تاجر وحرفي',
+      reach: '٢٠M+ انطباع رقمي'
     },
     tiers: [
       {
-        name: 'الراعي الرئيسي',
-        subtitle: 'حصرية - فرصة واحدة فقط',
+        name: 'الراعي البلاتيني',
+        tag: 'حصرية · فرصة واحدة فقط',
         price: 'تسمية المهرجان',
         features: [
-          'تسمية المهرجان بالكامل',
-          '2 بوث مميزة (أفضل موقع)',
-          'تسمية المسرح الرئيسي',
-          'ذكر يومي من المذيع (× 20 يوم)',
-          '5 منشورات أسبوعية',
-          '4 فيديوهات حملة',
-          'حفل الافتتاح والختام',
-          'ضيافة VIP حصرية'
+          'تسمية المهرجان بالكامل (شعار + اسم)',
+          '٢ بوث مميز (أفضل موقع في المهرجان)',
+          'تسمية المسرح الرئيسي ومساحة المشجعين',
+          'ذكر يومي من المذيع (× ٣٠ يوم)',
+          '٥ منشورات أسبوعية + ٤ فيديوهات حملة',
+          'حفل الافتتاح والختام (كلمة الراعي)',
+          'ضيافة VIP حصرية + تقارير أسبوعية'
         ],
         kpi: 'إجمالي الانطباعات • حركة البوث • الوصول الاجتماعي',
-        brands: 'STC • موبايلي • الراجحي • البنوك • FMCG الكبرى',
-        action: 'تواصل معنا',
-        link: 'mailto:info@alahsashopping.com',
+        target: 'STC • موبايلي • الراجحي • البنوك الكبرى • FMCG',
+        cta: 'تواصل معنا',
+        link: 'mailto:sponsors@pulse-ahsa.sa',
         highlight: true
       },
       {
-        name: 'راعي منطقة',
-        subtitle: 'ملكية المنطقة',
+        name: 'الراعي الذهبي',
+        tag: 'ملكية المنطقة',
         price: 'مخصص',
         features: [
-          'تسمية منطقة كاملة',
-          'علامة تجارية في كل المنطقة',
-          'بوث كبير (موقع مميز)',
-          'ذكر يومي خلال ساعات المنطقة',
-          '3 منشورات أسبوعية',
-          'نشاط برعاية في المنطقة',
-          '2-3 فرص متاحة'
+          'تسمية منطقة كاملة (من أصل ٦ مناطق)',
+          'علامة تجارية في كل أنحاء المنطقة',
+          'بوث كبير (موقع مميز داخل المنطقة)',
+          'ذكر يومي خلال ساعات عمل المنطقة',
+          '٣ منشورات أسبوعية + نشاط برعاية',
+          '٢–٣ فرص متاحة لكل منطقة',
+          'تقرير أداء مفصل أسبوعي'
         ],
         kpi: 'حركة المنطقة • وقت المكوث • استحضار العلامة',
-        brands: 'ريد بول • سامسونج • البيك • هامليز',
-        action: 'تواصل معنا',
-        link: 'mailto:info@alahsashopping.com',
+        target: 'ريد بول • سامسونج • البيك • هامليز • ناهد',
+        cta: 'تواصل معنا',
+        link: 'mailto:sponsors@pulse-ahsa.sa',
         highlight: false
       },
       {
-        name: 'راعي نشاط',
-        subtitle: 'علامة النشاط',
-        price: 'من 10,000 ر.س',
+        name: 'الراعي الفضي',
+        tag: 'علامة النشاط / الجوائز',
+        price: 'من ١٠،٠٠٠ ر.س',
         features: [
-          'علامة على نشاط متكرر',
-          'تسمية "[العلامة] ساعة الخصم"',
-          'لافتة النشاط + ذكر من المذيع',
-          'بوث قياسي',
-          'منشوران أسبوعياً',
-          'دمج في الجوائز',
-          'علامات متعددة ممكنة'
+          'علامة على نشاط متكرر (ساعة الخصم / السحب)',
+          'تسمية "[العلامة] ساعة الخصم" أو "جائزة كبرى"',
+          'لافتة النشاط + ذكر من المذيع يومياً',
+          'بوث قياسي + منشران أسبوعياً',
+          'دمج في نظام الجوائز والسحب',
+          'خيار بدون بوث (تركيز رقمي)',
+          'تقرير تحليلات المشاركة'
         ],
         kpi: 'حضور النشاط • الذكريات • زيارات البوث',
-        brands: 'مدى • STC Pay • بيبسي • نسكافيه',
-        action: 'سجل الآن',
-        link: '/apply',
+        target: 'مدى • STC Pay • بيبسي • نسكافيه • نون',
+        cta: 'سجل الآن',
+        link: '/ar/apply',
         highlight: false
       },
       {
-        name: 'راعي الجوائز',
-        subtitle: 'قوة العطاء',
-        price: 'حسب قيمة الجائزة',
+        name: 'الشريك المحلي',
+        tag: 'تركيز على التحويل',
+        price: 'من ٥،٠٠٠ ر.س',
         features: [
-          'العلامة على عجلة الحظ والجواز',
-          'إعلان "[جائزة العلامة الكبرى]"',
-          'ذكر على المسرح في كل سحب',
-          'شعار على كل مواد الجوائز',
-          'خيار بدون بوث',
-          'حسب قيمة الجائزة'
-        ],
-        kpi: 'المشاركة في السحب • الانتشار الاجتماعي',
-        brands: 'إلكترونيات • جوالات • سفر • قسائم',
-        action: 'تواصل معنا',
-        link: 'mailto:info@alahsashopping.com',
-        highlight: false
-      },
-      {
-        name: 'تاجر محلي',
-        subtitle: 'تركيز على التحويل',
-        price: 'من 5,000 ر.س',
-        features: [
-          'بوث واحد في السوق',
-          'مشاركة في ساعة الخصم',
-          'نظام QR لجمع العملاء',
-          'منشور واحد أسبوعياً',
-          'حقوق التذوق والعينات',
-          'محطة ختم الجواز',
-          'قائمة منتجات المهرجان'
+          'بوث واحد في سوق التجار',
+          'مشاركة في ساعة الخصم اليومية',
+          'نظام QR لجمع العملاء والبيانات',
+          'منشور واحد أسبوعياً على السوشيال',
+          'حقوق التذوق وتوزيع العينات',
+          'محطة ختم في جواز المهرجان',
+          'قائمة منتجات المهرجان الرسمية'
         ],
         kpi: 'حجم المبيعات • حركة البوث • معدل المسح',
-        brands: 'تجار الأحساء • SMEs • مطاعم • علامات محلية',
-        action: 'سجل الآن',
-        link: '/apply',
-        highlight: false
-      },
-      {
-        name: 'راعي رقمي',
-        subtitle: 'الوصول للحملات',
-        price: 'مخصص',
-        features: [
-          'حملة اجتماعية مشتركة',
-          'حقوق تحدي الهاشتاق',
-          'ظهور في كل المنشورات',
-          'استيلاء على القصص (1/أسبوع)',
-          'دمج في التطبيق',
-          'مضمون المؤثرين',
-          'تقرير تحليلات الوصول'
-        ],
-        kpi: 'الانطباعات الرقمية • معدل النقر • حجم الهاشتاق',
-        brands: 'تيك توك • سناب شات • نون • تطبيقات التوصيل',
-        action: 'تواصل معنا',
-        link: 'mailto:info@alahsashopping.com',
+        target: 'تجار الأحساء • SMEs • مطاعم • علامات محلية',
+        cta: 'سجل الآن',
+        link: '/ar/apply',
         highlight: false
       }
     ],
     back: '← العودة للرئيسية',
-    contact: 'للمزيد من المعلومات',
-    email: 'info@alahsashopping.com'
+    contact: 'للمزيد من المعلومات والحجز المبكر',
+    email: 'sponsors@pulse-ahsa.sa'
   },
   en: {
     title: 'Sponsorship Packages',
-    subtitle: 'Strategic Partnership with Al Ahsa Shopping Festival 2026',
-    economicImpact: {
+    subtitle: 'Join Al-Ahsa\'s biggest economic activation platform. Every partner gets measurable ROI.',
+    impact: {
       title: 'Expected Economic Impact',
-      visitors: '3K–5K Daily Visitors',
-      purchasing: 'SAR 600K+ Daily Purchasing',
-      booths: '50+ Sponsor Booths',
-      revenue: 'SAR 2M+ Est. Revenue',
-      weeks: '4 Weeks • 5 Days/Week'
-    },
-    whySponsor: {
-      title: 'Why Sponsor?',
-      reasons: [
-        'Reach 3,000-5,000 daily visitors',
-        'SAR 600K+ daily purchasing power',
-        'Integrated economic activation platform',
-        'Intensive family presence (4 PM - 11 PM)',
-        'Wide media & digital coverage',
-        'Direct sales opportunities & customer engagement'
-      ]
+      visitors: '150,000+ Visitors',
+      spending: '600K+ SAR Daily Purchasing',
+      merchants: '300+ Merchants & Craftsmen',
+      reach: '20M+ Digital Impressions'
     },
     tiers: [
       {
-        name: 'Title Sponsor',
-        subtitle: 'Exclusive - 1 Slot Only',
+        name: 'Platinum Sponsor',
+        tag: 'Exclusive · 1 Slot Only',
         price: 'Festival Naming Rights',
         features: [
-          'Festival naming rights',
-          '2 premium booths (best location)',
-          'Main stage naming',
-          'Daily MC mention (× 20 days)',
-          '5 social posts/week',
-          '4 campaign videos',
-          'Opening & closing ceremony',
-          'Exclusive VIP hospitality'
+          'Full festival naming rights (logo + title)',
+          '2 premium booths (best festival location)',
+          'Main stage & Fan Zone naming',
+          'Daily MC mention (× 30 days)',
+          '5 social posts/week + 4 campaign videos',
+          'Opening & closing ceremony (speaker slot)',
+          'Exclusive VIP hospitality + weekly reports'
         ],
         kpi: 'Total impressions • Booth footfall • Social reach',
-        brands: 'STC • Mobily • Alrajhi • Banks • Major FMCG',
-        action: 'Contact Us',
-        link: 'mailto:info@alahsashopping.com',
+        target: 'STC • Mobily • Alrajhi • Major Banks • FMCG',
+        cta: 'Contact Us',
+        link: 'mailto:sponsors@pulse-ahsa.sa',
         highlight: true
       },
       {
-        name: 'Zone Sponsor',
-        subtitle: 'Zone Ownership',
+        name: 'Gold Sponsor',
+        tag: 'Zone Ownership',
         price: 'Custom',
         features: [
-          'Full naming of 1 zone',
+          'Full naming of 1 zone (out of 6)',
           'Zone-wide branding & signage',
-          '1 large booth (prime in zone)',
-          'Daily mention × zone hours',
-          '3 social posts/week',
-          'Sponsored activity in zone',
-          '2–3 slots per zone'
+          '1 large booth (prime in-zone location)',
+          'Daily mention × zone operating hours',
+          '3 social posts/week + sponsored activity',
+          '2–3 slots available per zone',
+          'Detailed weekly performance report'
         ],
         kpi: 'Zone footfall • Dwell time • Brand recall',
-        brands: 'Red Bull • Samsung • AlBaik • Hamleys',
-        action: 'Contact Us',
-        link: 'mailto:info@alahsashopping.com',
+        target: 'Red Bull • Samsung • AlBaik • Hamleys • Nahdi',
+        cta: 'Contact Us',
+        link: 'mailto:sponsors@pulse-ahsa.sa',
         highlight: false
       },
       {
-        name: 'Activity Sponsor',
-        subtitle: 'Activation Brand',
+        name: 'Silver Sponsor',
+        tag: 'Activation / Prize Power',
         price: 'From SAR 10,000',
         features: [
-          'Brand on 1 recurring activity',
-          "'[Brand] Flash Sale Hour' naming",
-          'Activity banner + MC mention',
-          '1 standard booth',
-          '2 social posts/week',
-          'Giveaway integration slot',
-          'Multiple brands possible'
+          'Brand on recurring activity (Flash Sale / Draws)',
+          "'[Brand] Flash Sale Hour' or 'Grand Prize' naming",
+          'Activity banner + daily MC mention',
+          '1 standard booth + 2 social posts/week',
+          'Integration into prize & draw system',
+          'No-booth option (digital focus)',
+          'Participation analytics report'
         ],
         kpi: 'Activity attendance • Mentions • Booth visits',
-        brands: 'Saudi Payments • STC Pay • Pepsi • Nescafe',
-        action: 'Apply Now',
-        link: '/apply',
+        target: 'Saudi Payments • STC Pay • Pepsi • Nescafe • Noon',
+        cta: 'Apply Now',
+        link: '/en/apply',
         highlight: false
       },
       {
-        name: 'Prize Sponsor',
-        subtitle: 'Giveaway Power',
-        price: 'Based on Prize Value',
-        features: [
-          'Name on spin wheel & passport',
-          "'[Brand] Grand Prize' announcements",
-          'Stage shoutout every draw',
-          'Logo on all prize collateral',
-          'No booth required option',
-          'Scaled by prize value'
-        ],
-        kpi: 'Draw participation • Social virality',
-        brands: 'Electronics • Mobile • Travel • Retail vouchers',
-        action: 'Contact Us',
-        link: 'mailto:info@alahsashopping.com',
-        highlight: false
-      },
-      {
-        name: 'Local Trader',
-        subtitle: 'Conversion Focus',
+        name: 'Local Partner',
+        tag: 'Conversion Focus',
         price: 'From SAR 5,000',
         features: [
           '1 standard marketplace booth',
-          'Flash sale hour participation',
-          'QR lead capture setup',
+          'Daily Flash Sale Hour participation',
+          'QR lead capture & data collection setup',
           '1 social story/week',
-          'Sampling rights',
+          'Sampling & tasting rights',
           'Passport stamp station',
-          'Festival product listing'
+          'Official festival product listing'
         ],
         kpi: 'Direct sales • Booth traffic • QR scan rate',
-        brands: 'Al Ahsa merchants • SMEs • Restaurants • Local brands',
-        action: 'Apply Now',
-        link: '/apply',
-        highlight: false
-      },
-      {
-        name: 'Digital Sponsor',
-        subtitle: 'Campaign Reach',
-        price: 'Custom',
-        features: [
-          'Co-branded social campaign',
-          'Hashtag challenge rights',
-          'Featured in all digital posts',
-          'Story takeover (1 per week)',
-          'App integration (if applicable)',
-          'Influencer content inclusion',
-          'Reach analytics report'
-        ],
-        kpi: 'Digital impressions • CTR • Hashtag volume',
-        brands: 'TikTok • Snapchat • Noon • Delivery apps',
-        action: 'Contact Us',
-        link: 'mailto:info@alahsashopping.com',
+        target: 'Al-Ahsa merchants • SMEs • Restaurants • Local brands',
+        cta: 'Apply Now',
+        link: '/en/apply',
         highlight: false
       }
     ],
     back: '← Back to Home',
-    contact: 'For more information',
-    email: 'info@alahsashopping.com'
+    contact: 'For more information & early booking',
+    email: 'sponsors@pulse-ahsa.sa'
   }
 };
 
 export default function SponsorsPage({ params }: { params: Promise<{ locale: string }> }) {
   const resolvedParams = use(params);
-  const [lang, setLang] = useState<'ar' | 'en'>(resolvedParams.locale as 'ar' | 'en');
+  const lang = resolvedParams.locale as 'ar' | 'en';
   const t = translations[lang];
   const isAr = lang === 'ar';
 
   return (
-    <main className="min-h-screen py-20 bg-gradient-to-b from-[#f8f5f0] to-white" dir={isAr ? 'rtl' : 'ltr'}>
-      {/* Language Toggle */}
-      <div className={`fixed top-4 ${isAr ? 'left-4' : 'right-4'} z-50`}>
-        <button 
-          onClick={() => setLang(lang === 'ar' ? 'en' : 'ar')} 
-          className="bg-[#D4AF37] text-[#1a1a2e] px-4 py-2 rounded-full font-bold shadow-md hover:scale-105 transition"
-        >
-          {lang === 'ar' ? 'English' : 'عربي'}
-        </button>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Back Link */}
-        <Link href={`/${lang}`} className="text-[#2E5C3A] font-bold hover:underline mb-8 inline-block">
-          {t.back}
-        </Link>
-
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-black text-[#2E5C3A] mb-4">{t.title}</h1>
-          <p className="text-xl text-gray-600">{t.subtitle}</p>
+    <main className="min-h-screen bg-[#FAF8F5] text-[#2C2416]" dir={isAr ? 'rtl' : 'ltr'}>
+      {/* Navbar */}
+      <nav className="sticky top-0 z-50 bg-[#FAF8F5]/90 backdrop-blur-md border-b border-[#E8E0D4] px-6 py-4">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <Link href={`/${lang}`} className="font-bold text-xl text-[#1B4D3E]">
+            {isAr ? 'نبض الأحساء' : 'Pulse of Al-Ahsa'}
+          </Link>
+          <div className="hidden md:flex gap-6 text-sm font-bold text-[#2C2416]">
+            <Link href={`/${lang}/zones`} className="hover:text-[#1B4D3E] transition">{isAr ? 'المناطق' : 'Zones'}</Link>
+            <Link href={`/${lang}/schedule`} className="hover:text-[#1B4D3E] transition">{isAr ? 'الجدول' : 'Schedule'}</Link>
+            <Link href={`/${lang}/sponsors`} className="text-[#1B4D3E]">{isAr ? 'الرعاة' : 'Sponsors'}</Link>
+          </div>
+          <Link 
+            href={`/${lang}/register`}
+            className="bg-[#1B4D3E] text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-[#143A2E] transition"
+          >
+            {isAr ? 'سجل الآن' : 'Register'}
+          </Link>
         </div>
+      </nav>
 
-        {/* Economic Impact Section */}
-        <section className="mb-20">
-          <h2 className="text-3xl font-bold text-center text-[#2E5C3A] mb-10">{t.economicImpact.title}</h2>
-          <div className="grid md:grid-cols-5 gap-6">
-            <div className="bg-white rounded-2xl p-6 shadow-lg text-center border-2 border-[#D4AF37]">
-              <div className="text-4xl font-black text-[#D4AF37] mb-2">3K–5K</div>
-              <div className="text-sm text-gray-600">{t.economicImpact.visitors}</div>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg text-center border-2 border-[#D4AF37]">
-              <div className="text-3xl font-black text-[#D4AF37] mb-2">600K+ ر.س</div>
-              <div className="text-sm text-gray-600">{t.economicImpact.purchasing}</div>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg text-center border-2 border-[#D4AF37]">
-              <div className="text-4xl font-black text-[#D4AF37] mb-2">50+</div>
-              <div className="text-sm text-gray-600">{t.economicImpact.booths}</div>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg text-center border-2 border-[#D4AF37]">
-              <div className="text-3xl font-black text-[#D4AF37] mb-2">2M+ ر.س</div>
-              <div className="text-sm text-gray-600">{t.economicImpact.revenue}</div>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-lg text-center border-2 border-[#D4AF37]">
-              <div className="text-2xl font-black text-[#D4AF37] mb-2">4×5</div>
-              <div className="text-sm text-gray-600">{t.economicImpact.weeks}</div>
-            </div>
+      {/* Header */}
+      <section className="py-16 px-6 text-center bg-gradient-to-b from-[#FAF8F5] to-[#F4E4C1]">
+        <h1 className="text-4xl md:text-5xl font-black text-[#1B4D3E] mb-6">{t.title}</h1>
+        <p className="text-lg text-[#5A4A2A] max-w-3xl mx-auto mb-12">{t.subtitle}</p>
+        
+        {/* Economic Impact */}
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-[#E8E0D4]">
+            <div className="text-2xl font-black text-[#D4AF37] mb-1">١٥K+</div>
+            <div className="text-sm text-[#5A4A2A]">{t.impact.visitors}</div>
           </div>
-        </section>
-
-        {/* Why Sponsor Section */}
-        <section className="mb-20 bg-[#2E5C3A] rounded-3xl p-10 text-white">
-          <h2 className="text-3xl font-bold text-center mb-10">{t.whySponsor.title}</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {t.whySponsor.reasons.map((reason, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <span className="text-[#D4AF37] text-2xl">✓</span>
-                <span className="text-lg">{reason}</span>
-              </div>
-            ))}
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-[#E8E0D4]">
+            <div className="text-2xl font-black text-[#D4AF37] mb-1">٦٠K+</div>
+            <div className="text-sm text-[#5A4A2A]">{t.impact.spending}</div>
           </div>
-        </section>
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-[#E8E0D4]">
+            <div className="text-2xl font-black text-[#D4AF37] mb-1">٣٠٠+</div>
+            <div className="text-sm text-[#5A4A2A]">{t.impact.merchants}</div>
+          </div>
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-[#E8E0D4]">
+            <div className="text-2xl font-black text-[#D4AF37] mb-1">٢٠M+</div>
+            <div className="text-sm text-[#5A4A2A]">{t.impact.reach}</div>
+          </div>
+        </div>
+      </section>
 
-        {/* Sponsorship Tiers */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+      {/* Tiers Grid */}
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
           {t.tiers.map((tier, i) => (
             <div 
               key={i} 
-              className={`rounded-2xl p-8 shadow-xl flex flex-col ${
+              className={`rounded-2xl p-8 shadow-lg flex flex-col ${
                 tier.highlight 
-                  ? 'bg-gradient-to-br from-[#D4AF37] to-[#B8941F] text-[#1a1a2e] scale-105 border-4 border-[#2E5C3A]' 
-                  : 'bg-white border-2 border-transparent hover:border-[#D4AF37] transition'
+                  ? 'bg-gradient-to-br from-[#1B4D3E] to-[#143A2E] text-white border-2 border-[#D4AF37]' 
+                  : 'bg-white border-2 border-[#E8E0D4] hover:border-[#D4AF37] transition'
               }`}
             >
               <div className="mb-4">
-                <h2 className={`text-2xl font-bold mb-1 ${tier.highlight ? 'text-[#1a1a2e]' : 'text-[#2E5C3A]'}`}>
-                  {tier.name}
-                </h2>
-                <p className={`text-sm ${tier.highlight ? 'text-[#1a1a2e]/80' : 'text-gray-500'}`}>
-                  {tier.subtitle}
+                <div className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-2 ${tier.highlight ? 'bg-[#D4AF37] text-[#1a1a2e]' : 'bg-[#F4E4C1] text-[#5A4A2A]'}`}>
+                  {tier.tag}
+                </div>
+                <h2 className="text-2xl font-bold">{tier.name}</h2>
+                <p className={`text-xl font-black mt-2 ${tier.highlight ? 'text-[#D4AF37]' : 'text-[#1B4D3E]'}`}>
+                  {tier.price}
                 </p>
               </div>
               
-              <p className={`text-3xl font-black mb-6 ${tier.highlight ? 'text-[#1a1a2e]' : 'text-[#D4AF37]'}`}>
-                {tier.price}
-              </p>
-              
-              <ul className="space-y-3 mb-8 flex-grow">
+              <ul className="space-y-3 mb-6 flex-grow">
                 {tier.features.map((feat, j) => (
-                  <li key={j} className={`flex items-start gap-2 text-sm ${tier.highlight ? 'text-[#1a1a2e]' : 'text-gray-600'}`}>
-                    <span className={`${tier.highlight ? 'text-[#1a1a2e]' : 'text-[#D4AF37]'} mt-1`}>✓</span>
+                  <li key={j} className={`flex items-start gap-2 text-sm ${tier.highlight ? 'text-[#E8E0D4]' : 'text-[#5A4A2A]'}`}>
+                    <span className={tier.highlight ? 'text-[#D4AF37]' : 'text-[#1B4D3E]'}>✓</span>
                     {feat}
                   </li>
                 ))}
               </ul>
               
-              <div className={`text-xs mb-4 pb-4 border-b ${tier.highlight ? 'border-[#1a1a2e]/30' : 'border-gray-200'}`}>
-                <span className={tier.highlight ? 'text-[#1a1a2e]/80' : 'text-gray-500'}>
+              <div className={`text-xs mb-6 pb-4 border-t ${tier.highlight ? 'border-[#ffffff33]' : 'border-[#E8E0D4]'}`}>
+                <span className={tier.highlight ? 'text-[#E8E0D4]' : 'text-[#5A4A2A]'}>
                   <strong>KPI:</strong> {tier.kpi}
                 </span>
               </div>
               
-              <div className={`text-xs mb-6 ${tier.highlight ? 'text-[#1a1a2e]/80' : 'text-gray-500'}`}>
-                <strong>{isAr ? 'علامات مقترحة:' : 'Target Brands:'}</strong> {tier.brands}
+              <div className={`text-xs mb-6 ${tier.highlight ? 'text-[#E8E0D4]' : 'text-[#5A4A2A]'}`}>
+                <strong>{isAr ? 'علامات مقترحة:' : 'Target Brands:'}</strong> {tier.target}
               </div>
               
               <a 
                 href={tier.link} 
                 className={`block w-full text-center py-3 rounded-xl font-bold transition ${
                   tier.highlight 
-                    ? 'bg-[#2E5C3A] text-white hover:bg-[#1a3a23]' 
-                    : 'bg-[#2E5C3A] text-white hover:bg-[#1a3a23]'
+                    ? 'bg-[#D4AF37] text-[#1a1a2e] hover:bg-[#B8941F]' 
+                    : 'bg-[#1B4D3E] text-white hover:bg-[#143A2E]'
                 }`}
               >
-                {tier.action}
+                {tier.cta}
               </a>
             </div>
           ))}
         </div>
+      </section>
 
-        {/* Contact Section */}
-        <div className="text-center bg-[#f8f5f0] rounded-2xl p-10">
-          <p className="text-gray-600 mb-2">{t.contact}</p>
-          <a href="mailto:info@alahsashopping.com" className="text-2xl font-bold text-[#D4AF37] hover:underline">
-            {t.email}
-          </a>
+      {/* Contact CTA */}
+      <section className="py-16 px-6 bg-[#F4E4C1] text-center">
+        <p className="text-[#5A4A2A] mb-2">{t.contact}</p>
+        <a href={`mailto:${t.email}`} className="text-xl font-bold text-[#1B4D3E] hover:underline">
+          {t.email}
+        </a>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 px-6 bg-[#1B4D3E] text-white text-center">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-6">
+          <div className="font-bold text-xl">نبض الأحساء</div>
+          <span className="hidden md:inline text-[#D4AF37]">|</span>
+          <div className="text-sm text-[#E8E0D4]">
+            {isAr ? 'الموقع بواسطة' : 'Website by'} <a href="https://nexaro.tech" target="_blank" className="text-[#D4AF37] font-bold hover:underline">Nexaro.tech</a>
+            <span className="mx-2">|</span>
+            {isAr ? 'الفعالية بواسطة' : 'Event by'} <span className="font-bold">The Vicious Esports</span>
+          </div>
         </div>
-      </div>
+        <p className="text-xs text-[#A89B8A]">
+          © 2026 {isAr ? 'نبض الأحساء. جميع الحقوق محفوظة.' : 'Pulse of Al-Ahsa. All rights reserved.'}
+        </p>
+      </footer>
     </main>
   );
 }
