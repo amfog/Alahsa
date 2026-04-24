@@ -1,147 +1,71 @@
 'use client';
 
-import { useState, use } from 'react';
+import { use } from 'react';
 import Link from 'next/link';
 
 const translations = {
   ar: {
     title: 'الجدول الزمني والأنشطة',
-    subtitle: '4 أسابيع من الترفيه والتسوق — كل يوم مغامرة جديدة',
-    hours: {
-      label: 'أوقات العمل',
-      days: 'الخميس — الاثنين',
-      time: '4:00 م — 11:00 م'
-    },
+    subtitle: '٣٠ يوماً من المهرجانات في الأحساء، تجمع بين تراث اليونسكو وثقافة النخيل والتجارة وكأس العالم للألعاب الإلكترونية.',
     timeline: {
-      title: 'الجدول الزمني لمدة 4 أسابيع',
+      title: 'مناورة ٣٠ يوماً',
+      desc: 'كل ٥ أيام، منطقة جديدة في موقع جديد.',
       weeks: [
-        {
-          week: 'الأسبوع الأول',
-          dates: '10 يونيو — 16 يونيو',
-          theme: '🎉 الافتتاح الكبير',
-          events: [
-            'حفل الافتتاح وقطع الشريط',
-            'تحدي المؤثرين للتسوق',
-            'إطلاق جواز المهرجان',
-            'سحب الجوائز الكبرى (مليون ريال)'
-          ]
-        },
-        {
-          week: 'الأسبوع الثاني',
-          dates: '17 يونيو — 23 يونيو',
-          theme: '👨‍👩‍👧 العائلة والتراث',
-          events: [
-            'مطبخ الأحساء (مسابقة طبخ)',
-            'رحلة تراثية خاصة',
-            'ليلة العلامات المحلية',
-            'رحلة البحث عن الكنز'
-          ]
-        },
-        {
-          week: 'الأسبوع الثالث',
-          dates: '24 يونيو — 30 يونيو',
-          theme: '🎮 الشباب والألعاب',
-          events: [
-            'بطولة الألعاب الإلكترونية المصغرة',
-            'تحدي المهارات الرياضية',
-            'ركن المبدعين (تيك توك)',
-            'يوم المؤثرين'
-          ]
-        },
-        {
-          week: 'الأسبوع الرابع',
-          dates: '1 يوليو — 10 يوليو',
-          theme: '🏆 الأسبوع الختامي الكبير',
-          events: [
-            'أسبوع التخفيضات الضخمة',
-            'السحب الكبير لجواز المهرجان',
-            'بطولة عجلة الحظ النهائية',
-            'حفل الختام الكبير'
-          ]
-        }
+        { days: '١-٥', title: 'المطبخ الأصيل', venue: 'الأحساء مول', emoji: '🍽️' },
+        { days: '٦-١٠', title: 'الحرفيين', venue: 'الراشد مول', emoji: '🎨' },
+        { days: '١١-١٥', title: 'الموسيقى الشعبية', venue: 'الجوهرة', emoji: '🎵' },
+        { days: '١٦-٢٠', title: 'تاريخ الأحساء', venue: 'العقيل مول', emoji: '🏛️' },
+        { days: '٢١-٢٥', title: 'النخلة والتمور', venue: 'الأحساء مول', emoji: '🌴' },
+        { days: '٢٦-٣٠', title: 'منطقة المشجعين', venue: 'مدينة الملاهي/كرة القدم', emoji: '🎮' }
       ]
     },
-    daily: {
-      title: 'الجدول اليومي (الخميس — الاثنين)',
+    routine: {
+      title: 'الروتين اليومي',
       activities: [
-        { time: '4:00 م', name: '🚪 افتتاح الأبواب', desc: 'استقبال الزوار وتسليم جوازات المهرجان.' },
-        { time: '5:00 م', name: '🌴 التراث والحرف', desc: 'ورش عمل النخيل وقصة الأحساء.' },
-        { time: '6:00 م', name: '🎮 تحدي الألعاب اليومي', desc: 'بطولة مصغرة ومسابقات شبابية.' },
-        { time: '7:00 م', name: '🎤 عرض المسرح العائلي', desc: 'مسرحيات ومسابقات تفاعلية للأطفال.' },
-        { time: '8:00 م', name: '⚡ ساعة الخصم (FLASH SALE)', desc: 'تخفيضات حصرية لمدة 60 دقيقة في جميع البوثات!' },
-        { time: '9:30 م', name: '🎁 سحب الجوائز', desc: 'الإعلان عن الفائزين وعروض المساء.' }
+        { time: '٤:٠٠ م', name: 'افتتاح الأبواب', desc: 'استقبال الزوار وتوزيع جوازات نبض الأحساء.' },
+        { time: '٥:٠٠ م', name: 'التراث والحرف', desc: 'ورش عمل النخيل وقصة الأحساء.' },
+        { time: '٦:٠٠ م', name: 'تحدي الألعاب اليومي', desc: 'بطولة مصغرة ومسابقات شبابية.' },
+        { time: '٧:٠٠ م', name: 'عرض المسرح العائلي', desc: 'مسرحيات ومسابقات تفاعلية للأطفال.' },
+        { time: '٨:٠٠ م', name: 'ساعة الخصم (FLASH SALE)', desc: 'تخفيضات حصرية لمدة ٦٠ دقيقة في جميع البوثات!' },
+        { time: '٩:٣٠ م', name: 'سحب الجوائز', desc: 'الإعلان عن الفائزين وعروض المساء.' }
       ]
+    },
+    events: {
+      opening: 'حفل الافتتاح الكبير (١٠ يونيو)',
+      closing: 'حفل الختام وجائزة نبض الأحساء الكبرى (١٠ يوليو)'
     },
     back: '← العودة للرئيسية',
     register: 'سجل الآن'
   },
   en: {
     title: 'Schedule & Activities',
-    subtitle: '4 Weeks of Entertainment & Shopping — A New Adventure Every Day',
-    hours: {
-      label: 'Operating Hours',
-      days: 'Thursday — Monday',
-      time: '4:00 PM — 11:00 PM'
-    },
+    subtitle: '30 days of festival in Al-Ahsa, fusing UNESCO heritage, date palm culture, commerce, and the World Cup for Electronic Games.',
     timeline: {
-      title: '4-Week Master Timeline',
+      title: '30-Day Timeline',
+      desc: 'Every 5 days, a new zone at a new venue.',
       weeks: [
-        {
-          week: 'Week 1',
-          dates: 'Jun 10 – Jun 16',
-          theme: '🎉 Grand Opening',
-          events: [
-            'Opening Ceremony & Ribbon Cutting',
-            'VIP Influencer Shopping Challenge',
-            'Festival Passport Launch',
-            'Mega Opening Giveaway (SAR Prizes)'
-          ]
-        },
-        {
-          week: 'Week 2',
-          dates: 'Jun 17 – Jun 23',
-          theme: '👨‍👧 Family & Culture',
-          events: [
-            'Al Ahsa Kitchen (Cooking Competition)',
-            'Special Heritage Walk',
-            'Local Brands Showcase Night',
-            'All-Zone Treasure Hunt'
-          ]
-        },
-        {
-          week: 'Week 3',
-          dates: 'Jun 24 – Jun 30',
-          theme: '🎮 Youth & Gaming',
-          events: [
-            'Mini Esports Tournament',
-            'Outdoor Football Skills Challenge',
-            'Creator Corner (TikTok & Reels)',
-            'Influencer Day Guest Appearances'
-          ]
-        },
-        {
-          week: 'Week 4',
-          dates: 'Jul 1 – Jul 10',
-          theme: '🏆 Mega Finale Week',
-          events: [
-            'Mega Discount Week (All Brands)',
-            'Loyalty Passport Grand Draw',
-            'Spin Wheel Championship Finale',
-            'Closing Ceremony (Jul 10)'
-          ]
-        }
+        { days: 'Days 1–5', title: 'Heritage Cuisine', venue: 'Al Ahsa Mall', emoji: '🍽️' },
+        { days: 'Days 6–10', title: 'Artisans & Crafts', venue: 'Al Rashid Mall', emoji: '🎨' },
+        { days: 'Days 11–15', title: 'Folk Music & Dates', venue: 'Al Jawhara', emoji: '🎵' },
+        { days: 'Days 16–20', title: 'History of Al-Ahsa', venue: 'Al Oqail Mall', emoji: '🏛️' },
+        { days: 'Days 21–25', title: 'Date Palm & Dates', venue: 'Al Ahsa Mall', emoji: '🌴' },
+        { days: 'Days 26–30', title: 'Fan Zone & Modern Al-Ahsa', venue: 'Entertainment City/Football', emoji: '🎮' }
       ]
     },
-    daily: {
-      title: 'Daily Schedule (Thu – Mon)',
+    routine: {
+      title: 'Daily Routine',
       activities: [
-        { time: '4:00 PM', name: '🚪 Doors Open', desc: 'Entry flow & Passport distribution.' },
-        { time: '5:00 PM', name: '🌴 Heritage & Crafts', desc: 'Date palm workshops & storytelling.' },
-        { time: '6:00 PM', name: '🎮 Daily Gaming Challenge', desc: 'Mini-tournaments & youth competitions.' },
-        { time: '7:00 PM', name: '🎤 Family Main Stage Show', desc: 'Interactive shows & kids competitions.' },
-        { time: '8:00 PM', name: '⚡ Flash Sale Hour', desc: 'Exclusive discounts across all booths for 60 mins!' },
-        { time: '9:30 PM', name: '🎁 Prize Draws & Shows', desc: 'Winner announcements & evening entertainment.' }
+        { time: '4:00 PM', name: 'Doors Open', desc: 'Visitor reception & Pulse of Al-Ahsa passport distribution.' },
+        { time: '5:00 PM', name: 'Heritage & Crafts', desc: 'Palm workshops & Al-Ahsa storytelling.' },
+        { time: '6:00 PM', name: 'Daily Gaming Challenge', desc: 'Mini-tournaments & youth competitions.' },
+        { time: '7:00 PM', name: 'Family Main Stage Show', desc: 'Interactive shows & kids competitions.' },
+        { time: '8:00 PM', name: 'Flash Sale Hour', desc: 'Exclusive discounts across all booths for 60 mins!' },
+        { time: '9:30 PM', name: 'Prize Draws', desc: 'Winner announcements & evening entertainment.' }
       ]
+    },
+    events: {
+      opening: 'Grand Opening Ceremony (June 10)',
+      closing: 'Closing Night & Pulse of Al-Ahsa Grand Prize (July 10)'
     },
     back: '← Back to Home',
     register: 'Register Now'
@@ -150,96 +74,105 @@ const translations = {
 
 export default function SchedulePage({ params }: { params: Promise<{ locale: string }> }) {
   const resolvedParams = use(params);
-  const [lang, setLang] = useState<'ar' | 'en'>(resolvedParams.locale as 'ar' | 'en');
+  const lang = resolvedParams.locale as 'ar' | 'en';
   const t = translations[lang];
   const isAr = lang === 'ar';
 
   return (
-    <main className="min-h-screen bg-white" dir={isAr ? 'rtl' : 'ltr'}>
-      {/* Language Toggle */}
-      <div className={`fixed top-4 ${isAr ? 'left-4' : 'right-4'} z-50`}>
-        <button 
-          onClick={() => setLang(lang === 'ar' ? 'en' : 'ar')} 
-          className="bg-[#D4AF37] text-[#1a1a2e] px-4 py-2 rounded-full font-bold shadow-md hover:scale-105 transition"
-        >
-          {lang === 'ar' ? 'English' : 'عربي'}
-        </button>
-      </div>
-
-      <div className="max-w-6xl mx-auto px-4">
-        {/* Back Link */}
-        <div className="pt-8">
-          <Link href={`/${lang}`} className="text-[#2E5C3A] font-bold hover:underline inline-block">
-            {t.back}
+    <main className="min-h-screen bg-[#FAF8F5] text-[#2C2416]" dir={isAr ? 'rtl' : 'ltr'}>
+      {/* Navbar */}
+      <nav className="sticky top-0 z-50 bg-[#FAF8F5]/90 backdrop-blur-md border-b border-[#E8E0D4] px-6 py-4">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <Link href={`/${lang}`} className="font-bold text-xl text-[#1B4D3E]">
+            {isAr ? 'نبض الأحساء' : 'Pulse of Al-Ahsa'}
           </Link>
-        </div>
-
-        {/* Header */}
-        <section className="text-center py-16">
-          <h1 className="text-5xl font-black text-[#2E5C3A] mb-4">{t.title}</h1>
-          <p className="text-xl text-gray-600 mb-8">{t.subtitle}</p>
-          
-          {/* Hours Badge */}
-          <div className="inline-block bg-[#2E5C3A] text-white px-8 py-4 rounded-2xl shadow-lg">
-            <div className="text-sm opacity-80 mb-1">{t.hours.label}</div>
-            <div className="text-2xl font-bold">{t.hours.days} • {t.hours.time}</div>
+          <div className="hidden md:flex gap-6 text-sm font-bold text-[#2C2416]">
+            <Link href={`/${lang}/zones`} className="hover:text-[#1B4D3E] transition">{isAr ? 'المناطق' : 'Zones'}</Link>
+            <Link href={`/${lang}/schedule`} className="text-[#1B4D3E]">{isAr ? 'الجدول' : 'Schedule'}</Link>
+            <Link href={`/${lang}/sponsors`} className="hover:text-[#1B4D3E] transition">{isAr ? 'الرعاة' : 'Sponsors'}</Link>
           </div>
-        </section>
-
-        {/* Timeline Section */}
-        <section className="mb-20">
-          <h2 className="text-3xl font-bold text-center text-[#2E5C3A] mb-10">{t.timeline.title}</h2>
-          <div className="grid gap-8">
-            {t.timeline.weeks.map((week, i) => (
-              <div key={i} className="flex flex-col md:flex-row gap-6 items-start bg-[#f8f5f0] p-8 rounded-2xl border-l-4 border-[#D4AF37]">
-                <div className="md:w-1/3 text-center md:text-left">
-                  <h3 className="text-2xl font-black text-[#D4AF37]">{week.week}</h3>
-                  <p className="text-gray-500 font-bold">{week.dates}</p>
-                </div>
-                <div className="md:w-2/3">
-                  <h4 className="text-xl font-bold text-[#2E5C3A] mb-3">{week.theme}</h4>
-                  <ul className="space-y-2">
-                    {week.events.map((evt, j) => (
-                      <li key={j} className="flex items-center text-gray-600">
-                        <span className="w-2 h-2 bg-[#2E5C3A] rounded-full ml-2 mr-2"></span>
-                        {evt}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Daily Schedule Section */}
-        <section className="mb-20 bg-[#1a1a2e] text-white rounded-3xl p-10">
-          <h2 className="text-3xl font-bold text-center mb-10 text-[#D4AF37]">{t.daily.title}</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {t.daily.activities.map((activity, i) => (
-              <div key={i} className="flex items-start gap-4 bg-[#2a2a3e] p-6 rounded-xl border border-gray-700">
-                <div className="bg-[#D4AF37] text-[#1a1a2e] px-3 py-1 rounded font-bold text-sm whitespace-nowrap">
-                  {activity.time}
-                </div>
-                <div>
-                  <h4 className="text-lg font-bold mb-1">{activity.name}</h4>
-                  <p className="text-gray-400 text-sm">{activity.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* CTA */}
-        <div className="text-center pb-20">
           <Link 
-            href={`/${lang}/apply`}
-            className="inline-block bg-[#D4AF37] text-[#1a1a2e] px-10 py-4 rounded-full font-bold text-lg hover:scale-105 transition shadow-lg"
+            href={`/${lang}/register`}
+            className="bg-[#1B4D3E] text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-[#143A2E] transition"
           >
-            {t.register}
+            {isAr ? 'سجل الآن' : 'Register'}
           </Link>
         </div>
-      </div>
+      </nav>
+
+      {/* Header */}
+      <section className="py-20 px-6 text-center">
+        <h1 className="text-4xl md:text-5xl font-black text-[#1B4D3E] mb-6">{t.title}</h1>
+        <p className="text-lg text-[#5A4A2A] max-w-3xl mx-auto mb-12">{t.subtitle}</p>
+        
+        {/* Special Events */}
+        <div className="flex flex-col md:flex-row justify-center gap-6 max-w-4xl mx-auto mb-12">
+          <div className="bg-[#D4AF37] text-[#1a1a2e] px-6 py-4 rounded-xl shadow-md font-bold text-lg">
+            🎉 {t.events.opening}
+          </div>
+          <div className="bg-[#1B4D3E] text-white px-6 py-4 rounded-xl shadow-md font-bold text-lg">
+            🏆 {t.events.closing}
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section className="pb-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-[#1B4D3E] mb-4">{t.timeline.title}</h2>
+          <p className="text-center text-[#5A4A2A] mb-12">{t.timeline.desc}</p>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {t.timeline.weeks.map((week, i) => (
+              <div key={i} className="bg-white p-8 rounded-2xl shadow-lg border-2 border-transparent hover:border-[#D4AF37] transition group relative overflow-hidden">
+                <div className="absolute top-0 right-0 bg-[#1B4D3E] text-white px-4 py-2 rounded-bl-xl text-sm font-bold">
+                  {week.days}
+                </div>
+                <div className="text-5xl mb-6 group-hover:scale-110 transition transform">{week.emoji}</div>
+                <h3 className="text-2xl font-bold text-[#1B4D3E] mb-3">{week.title}</h3>
+                <p className="text-[#5A4A2A] text-sm mb-4 flex items-center gap-2">
+                  <span>📍</span> {week.venue}
+                </p>
+                <div className="w-full h-1 bg-[#E8E0D4] rounded-full overflow-hidden">
+                  <div className="h-full bg-[#D4AF37]" style={{ width: `${((i + 1) / 6) * 100}%` }}></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Daily Routine Section */}
+      <section className="py-20 px-6 bg-[#1B4D3E] text-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 text-[#D4AF37]">{t.routine.title}</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {t.routine.activities.map((activity, i) => (
+              <div key={i} className="bg-[#143A2E] p-6 rounded-xl border border-[#2E5C3A]">
+                <div className="text-[#D4AF37] font-bold text-lg mb-2">{activity.time}</div>
+                <h4 className="text-xl font-bold mb-2">{activity.name}</h4>
+                <p className="text-[#A89B8A] text-sm">{activity.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 px-6 bg-[#1B4D3E] text-white text-center">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-6">
+          <div className="font-bold text-xl">نبض الأحساء</div>
+          <span className="hidden md:inline text-[#D4AF37]">|</span>
+          <div className="text-sm text-[#E8E0D4]">
+            {isAr ? 'الموقع بواسطة' : 'Website by'} <a href="https://nexaro.tech" target="_blank" className="text-[#D4AF37] font-bold hover:underline">Nexaro.tech</a>
+            <span className="mx-2">|</span>
+            {isAr ? 'الفعالية بواسطة' : 'Event by'} <span className="font-bold">The Vicious Esports</span>
+          </div>
+        </div>
+        <p className="text-xs text-[#A89B8A]">
+          © 2026 {isAr ? 'نبض الأحساء. جميع الحقوق محفوظة.' : 'Pulse of Al-Ahsa. All rights reserved.'}
+        </p>
+      </footer>
     </main>
   );
 }
