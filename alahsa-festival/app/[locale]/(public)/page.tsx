@@ -11,9 +11,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <nav className="sticky top-0 z-50 bg-[#FAF8F5]/80 backdrop-blur-md border-b border-[#E8E0D4] px-6 py-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <PulseBeat>
-              <div className="w-8 h-8 bg-[#1B4D3E] rounded-full flex items-center justify-center text-white font-bold text-xs">P</div>
-            </PulseBeat>
+            <PulseLogo size={48} />
             <div className="font-bold text-xl text-[#1B4D3E]">
               {isAr ? 'نبض الأحساء' : 'Pulse of Al-Ahsa'}
             </div>
@@ -37,8 +35,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         <FadeUp>
           <div className="max-w-5xl mx-auto text-center relative z-10">
             <PulseBeat>
-              <div className="inline-block mb-8 w-20 h-20 bg-[#1B4D3E] rounded-full flex items-center justify-center text-white font-bold text-3xl mx-auto shadow-xl">
-                {isAr ? 'ض' : 'P'}
+              <div className="inline-block mb-8">
+                <PulseLogo size={140} />
               </div>
             </PulseBeat>
             <h1 className="text-5xl md:text-7xl font-black text-[#1B4D3E] mb-6 leading-tight tracking-tight">
@@ -184,5 +182,43 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </div>
       </footer>
     </main>
+  );
+}
+
+// Improved Pulse Logo Component - Clean & Professional
+function PulseLogo({ size = 40 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Palm Tree Trunk */}
+      <rect x="46" y="52" width="8" height="28" fill="#1B4D3E" rx="2"/>
+      
+      {/* Palm Fronds - Left */}
+      <path d="M50 52 Q38 42 32 46 Q38 44 50 52" fill="#1B4D3E" opacity="0.95"/>
+      <path d="M50 50 Q35 38 28 41 Q36 38 50 50" fill="#1B4D3E" opacity="0.85"/>
+      <path d="M50 48 Q36 34 30 36 Q37 34 50 48" fill="#1B4D3E" opacity="0.75"/>
+      
+      {/* Palm Fronds - Right */}
+      <path d="M50 52 Q62 42 68 46 Q62 44 50 52" fill="#1B4D3E" opacity="0.95"/>
+      <path d="M50 50 Q65 38 72 41 Q64 38 50 50" fill="#1B4D3E" opacity="0.85"/>
+      <path d="M50 48 Q64 34 70 36 Q63 34 50 48" fill="#1B4D3E" opacity="0.75"/>
+      
+      {/* Center Frond */}
+      <path d="M50 50 L50 28 Q52 36 50 50" fill="#1B4D3E"/>
+      <path d="M50 50 L48 32 Q50 38 50 50" fill="#1B4D3E" opacity="0.85"/>
+      <path d="M50 50 L52 32 Q50 38 50 50" fill="#1B4D3E" opacity="0.85"/>
+      
+      {/* Pulse/Heartbeat Line - Gold */}
+      <path d="M18 52 L26 52 L30 38 L36 66 L42 52 L46 52 L50 24 L54 80 L58 52 L62 52 L68 42 L74 62 L82 62" 
+            stroke="#D4AF37" 
+            strokeWidth="3.5" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+            fill="none"/>
+      
+      {/* Dates - Gold Dots */}
+      <circle cx="36" cy="44" r="2.5" fill="#D4AF37"/>
+      <circle cx="64" cy="44" r="2.5" fill="#D4AF37"/>
+      <circle cx="50" cy="36" r="2.5" fill="#D4AF37"/>
+    </svg>
   );
 }
