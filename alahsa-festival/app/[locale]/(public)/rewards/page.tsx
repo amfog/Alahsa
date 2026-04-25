@@ -2,6 +2,8 @@
 
 import { use } from 'react';
 import Link from 'next/link';
+import Navbar from '@/components/ui/Navbar';
+import Footer from '@/components/ui/Footer';
 
 const translations = {
   ar: {
@@ -102,20 +104,7 @@ export default function RewardsPage({ params }: { params: Promise<{ locale: stri
 
   return (
     <main className="min-h-screen bg-[#FAF8F5] text-[#2C2416]" dir={isAr ? 'rtl' : 'ltr'}>
-      {/* Navbar */}
-      <nav className="sticky top-0 z-50 bg-[#FAF8F5]/80 backdrop-blur-md border-b border-[#E8E0D4] px-6 py-4">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <Link href={`/${lang}`} className="font-bold text-xl text-[#1B4D3E]">
-            {isAr ? 'نبض الأحساء' : 'Pulse of Al-Ahsa'}
-          </Link>
-          <div className="hidden md:flex gap-6 text-sm font-bold text-[#2C2416]">
-            <Link href={`/${lang}/zones`} className="hover:text-[#1B4D3E] transition">{isAr ? 'المناطق' : 'Zones'}</Link>
-            <Link href={`/${lang}/schedule`} className="hover:text-[#1B4D3E] transition">{isAr ? 'الجدول' : 'Schedule'}</Link>
-            <Link href={`/${lang}/sponsors`} className="hover:text-[#1B4D3E] transition">{isAr ? 'الرعاة' : 'Sponsors'}</Link>
-          </div>
-          <Link href={`/${lang}/register`} className="bg-[#1B4D3E] text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-[#143A2E] transition">{isAr ? 'سجل الآن' : 'Register'}</Link>
-        </div>
-      </nav>
+      <Navbar locale={lang} isAr={isAr} />
 
       {/* Header */}
       <section className="py-16 px-6 text-center bg-gradient-to-b from-[#FAF8F5] to-[#F4E4C1]">
@@ -187,19 +176,7 @@ export default function RewardsPage({ params }: { params: Promise<{ locale: stri
         </Link>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 px-6 bg-[#1B4D3E] text-white text-center">
-        <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-6">
-          <div className="font-bold text-xl">نبض الأحساء</div>
-          <span className="hidden md:inline text-[#D4AF37]">|</span>
-          <div className="text-sm text-[#E8E0D4]">
-            {isAr ? 'الموقع بواسطة' : 'Website by'} <a href="https://nexaro.tech" target="_blank" className="text-[#D4AF37] font-bold hover:underline">Nexaro.tech</a>
-            <span className="mx-2">|</span>
-            {isAr ? 'الفعالية بواسطة' : 'Event by'} <span className="font-bold">The Vicious Esports</span>
-          </div>
-        </div>
-        <p className="text-xs text-[#A89B8A]">© 2026 {isAr ? 'نبض الأحساء. جميع الحقوق محفوظة.' : 'Pulse of Al-Ahsa. All rights reserved.'}</p>
-      </footer>
+      <Footer locale={lang} isAr={isAr} />
     </main>
   );
 }

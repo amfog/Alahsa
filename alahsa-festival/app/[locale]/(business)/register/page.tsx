@@ -2,6 +2,8 @@
 
 import { useState, use } from 'react';
 import Link from 'next/link';
+import Navbar from '@/components/ui/Navbar';
+import Footer from '@/components/ui/Footer';
 
 const translations = {
   ar: {
@@ -74,7 +76,7 @@ const translations = {
 
 export default function RegisterPage({ params }: { params: Promise<{ locale: string }> }) {
   const resolvedParams = use(params);
-  const [lang, setLang] = useState<'ar' | 'en'>(resolvedParams.locale as 'ar' | 'en');
+  const lang = resolvedParams.locale as 'ar' | 'en';
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const t = translations[lang];
   const isAr = lang === 'ar';
@@ -102,18 +104,11 @@ export default function RegisterPage({ params }: { params: Promise<{ locale: str
     }
   };
 
-  const toggleLang = () => setLang(lang === 'ar' ? 'en' : 'ar');
-
   return (
     <main className="min-h-screen bg-[#FAF8F5] text-[#2C2416]" dir={isAr ? 'rtl' : 'ltr'}>
-      {/* Language Toggle */}
-      <div className={`fixed top-4 ${isAr ? 'left-4' : 'right-4'} z-50`}>
-        <button onClick={toggleLang} className="bg-[#D4AF37] text-[#1a1a2e] px-4 py-2 rounded-full font-bold shadow-md hover:scale-105 transition">
-          {lang === 'ar' ? 'English' : 'عربي'}
-        </button>
-      </div>
+      <Navbar locale={lang} isAr={isAr} />
 
-      <div className="max-w-4xl mx-auto px-6 py-20">
+      <div className="max-w-4xl mx-auto px-6 py-16">
         {/* Back Link */}
         <Link href={`/${lang}`} className="text-[#1B4D3E] font-bold hover:underline mb-8 inline-block">
           {t.back}
@@ -200,11 +195,8 @@ export default function RegisterPage({ params }: { params: Promise<{ locale: str
           </div>
         )}
 
-        {/* Footer */}
-        <div className="text-center mt-12 text-gray-500 text-sm">
-          {isAr ? '© 2026 نبض الأحساء. جميع الحقوق محفوظة.' : '© 2026 Pulse of Al-Ahsa. All rights reserved.'}
-        </div>
       </div>
+      <Footer locale={lang} isAr={isAr} />
     </main>
   );
 }
