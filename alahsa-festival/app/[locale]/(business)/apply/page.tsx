@@ -2,6 +2,8 @@
 
 import { useState, use } from 'react';
 import Link from 'next/link';
+import Navbar from '@/components/ui/Navbar';
+import Footer from '@/components/ui/Footer';
 
 const translations = {
   ar: {
@@ -48,7 +50,7 @@ const translations = {
 
 export default function ApplyPage({ params }: { params: Promise<{ locale: string }> }) {
   const resolvedParams = use(params);
-  const [lang, setLang] = useState<'ar' | 'en'>(resolvedParams.locale as 'ar' | 'en');
+  const lang = resolvedParams.locale as 'ar' | 'en';
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const t = translations[lang];
   const isAr = lang === 'ar';
@@ -84,16 +86,10 @@ export default function ApplyPage({ params }: { params: Promise<{ locale: string
     }
   };
 
-  const toggleLang = () => setLang(lang === 'ar' ? 'en' : 'ar');
-
   return (
-    <main className="min-h-screen py-20" dir={isAr ? 'rtl' : 'ltr'}>
-      <div className={`fixed top-4 ${isAr ? 'left-4' : 'right-4'} z-50`}>
-        <button onClick={toggleLang} className="bg-[#D4AF37] text-[#1a1a2e] px-4 py-2 rounded-full font-bold shadow-md hover:scale-105 transition">
-          {lang === 'ar' ? 'English' : 'عربي'}
-        </button>
-      </div>
-
+    <>
+      <Navbar locale={lang} isAr={isAr} />
+      <main className="min-h-screen py-16" dir={isAr ? 'rtl' : 'ltr'}>
       <div className="max-w-2xl mx-auto px-4">
         <Link href={`/${lang}`} className="text-[#2E5C3A] font-bold hover:underline mb-8 inline-block">
           {t.back}
@@ -166,18 +162,9 @@ export default function ApplyPage({ params }: { params: Promise<{ locale: string
           </button>
         </form>
 
-        {/* Footer */}
-        <div className="text-center mt-8 text-gray-500 text-sm bg-[#f8f5f0] py-4 rounded-xl border border-gray-200">
-          <div className="flex flex-col md:flex-row justify-center items-center gap-2 mb-1">
-            <span>{isAr ? 'الموقع بواسطة' : 'Website by'} <a href="https://nexaro.tech" target="_blank" rel="noopener noreferrer" className="text-[#D4AF37] font-bold hover:underline">Nexaro.tech</a></span>
-            <span className="hidden md:inline text-gray-300">|</span>
-            <span>{isAr ? 'الفعالية بواسطة' : 'Event by'} <span className="text-[#2E5C3A] font-bold">The Vicious Esports</span></span>
-          </div>
-          <p className="text-xs opacity-70">
-            {isAr ? '© 2026 مهرجان الأحساء للتسوق. جميع الحقوق محفوظة.' : '© 2026 Al Ahsa Shopping Festival. All rights reserved.'}
-          </p>
-        </div>
       </div>
     </main>
+      <Footer locale={lang} isAr={isAr} />
+    </>
   );
 }

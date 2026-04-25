@@ -122,7 +122,7 @@ export const stats = [
   { value: 150000, suffix: '+', ar: 'زائر متوقع', en: 'Expected Visitors' },
   { value: 30, suffix: '', ar: 'يوماً من الفعاليات', en: 'Days of Events' },
   { value: 6, suffix: '', ar: 'مناطق تجربة', en: 'Experience Zones' },
-  { value: 2026, suffix: '', ar: 'العام', en: 'Year' },
+  { value: 2, suffix: '', ar: 'بطولة عالمية', en: 'World Cups' },
 ];
 
 export const features = [
