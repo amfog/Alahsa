@@ -1,6 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import { FadeUp, Stagger, StaggerItem, HoverLift } from '@/components/ui/Animations';
 import Navbar from '@/components/ui/Navbar';
+import { motion } from 'framer-motion';
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -12,28 +15,67 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* 1. New Responsive Navbar */}
       <Navbar locale={locale} isAr={isAr} />
 
-      {/* 2. Hero Section with FIXED Logo */}
+      {/* 2. Hero Section with IMPROVED Animated Logo */}
       <section className="relative py-16 md:py-24 px-6 overflow-hidden">
         <FadeUp>
           <div className="max-w-5xl mx-auto text-center relative z-10">
             
-            {/* NEW LOGO: Palm Tree + Heartbeat Line */}
-            <div className="inline-block mb-8 animate-pulse">
+            {/* NEW LOGO: Individual Palm Fronds Pulsing */}
+            <div className="inline-block mb-8">
               <svg width="140" height="140" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Palm Fronds */}
-                <path d="M50 50 Q40 35 30 30 Q40 35 50 45" fill="#1B4D3E" opacity="0.8"/>
-                <path d="M50 50 Q60 35 70 30 Q60 35 50 45" fill="#1B4D3E" opacity="0.8"/>
-                <path d="M50 50 Q35 40 25 45 Q35 45 50 50" fill="#1B4D3E" opacity="0.9"/>
-                <path d="M50 50 Q65 40 75 45 Q65 45 50 50" fill="#1B4D3E" opacity="0.9"/>
-                <path d="M50 50 L50 25 Q52 35 50 50" fill="#1B4D3E"/>
+                {/* Palm Fronds with Individual Pulse Animation */}
+                <motion.path 
+                  d="M50 50 Q40 35 30 30 Q40 35 50 45" 
+                  fill="#1B4D3E" 
+                  opacity="0.8"
+                  animate={{ scale: [1, 1.05, 1], opacity: [0.8, 1, 0.8] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0 }}
+                />
+                <motion.path 
+                  d="M50 50 Q60 35 70 30 Q60 35 50 45" 
+                  fill="#1B4D3E" 
+                  opacity="0.8"
+                  animate={{ scale: [1, 1.05, 1], opacity: [0.8, 1, 0.8] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0.2 }}
+                />
+                <motion.path 
+                  d="M50 50 Q35 40 25 45 Q35 45 50 50" 
+                  fill="#1B4D3E" 
+                  opacity="0.9"
+                  animate={{ scale: [1, 1.05, 1], opacity: [0.9, 1, 0.9] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0.4 }}
+                />
+                <motion.path 
+                  d="M50 50 Q65 40 75 45 Q65 45 50 50" 
+                  fill="#1B4D3E" 
+                  opacity="0.9"
+                  animate={{ scale: [1, 1.05, 1], opacity: [0.9, 1, 0.9] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}
+                />
+                <motion.path 
+                  d="M50 50 L50 25 Q52 35 50 50" 
+                  fill="#1B4D3E"
+                  animate={{ scaleY: [1, 1.08, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
+                />
                 
                 {/* Palm Trunk */}
                 <rect x="46" y="50" width="8" height="25" fill="#1B4D3E"/>
                 <rect x="47" y="52" width="6" height="21" fill="#143A2E"/>
                 
                 {/* Dates (Gold Dots) */}
-                <circle cx="40" cy="38" r="2" fill="#D4AF37"/>
-                <circle cx="60" cy="38" r="2" fill="#D4AF37"/>
+                <motion.circle 
+                  cx="40" cy="38" r="2" 
+                  fill="#D4AF37"
+                  animate={{ scale: [1, 1.3, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity, delay: 0 }}
+                />
+                <motion.circle 
+                  cx="60" cy="38" r="2" 
+                  fill="#D4AF37"
+                  animate={{ scale: [1, 1.3, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity, delay: 0.5 }}
+                />
                 
                 {/* Heartbeat Pulse Line */}
                 <path d="M10 50 L30 50 L35 35 L45 65 L50 50 L55 50 L60 25 L65 75 L70 50 L90 50" 
@@ -143,7 +185,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </div>
       </Stagger>
 
-      {/* 5. NEW: Sponsor Preview Section */}
+      {/* 5. NEW: Sponsor Preview Section (From PDF) */}
       <section className="py-20 px-6 bg-[#FAF8F5]">
         <div className="max-w-7xl mx-auto text-center">
           <FadeUp>
@@ -157,15 +199,36 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
           <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { name: isAr ? 'بلاتينيوم' : 'Platinum', price: isAr ? 'حصرية' : 'Exclusive', color: 'bg-[#1B4D3E] text-white' },
-              { name: isAr ? 'ذهبي' : 'Gold', price: isAr ? 'مخصص' : 'Custom', color: 'bg-[#D4AF37] text-[#1a1a2e]' },
-              { name: isAr ? 'فضي' : 'Silver', price: isAr ? '١٠K+ ر.س' : '10K+ SAR', color: 'bg-gray-200 text-[#5A4A2A]' },
-              { name: isAr ? 'شريك محلي' : 'Local Partner', price: isAr ? '٥K+ ر.س' : '5K+ SAR', color: 'bg-[#F4E4C1] text-[#5A4A2A]' },
+              { 
+                name: isAr ? 'بلاتينيوم' : 'Platinum', 
+                price: isAr ? 'حصرية' : 'Exclusive', 
+                color: 'bg-[#1B4D3E] text-white',
+                desc: isAr ? 'تسمية المهرجان' : 'Festival Naming'
+              },
+              { 
+                name: isAr ? 'ذهبي' : 'Gold', 
+                price: isAr ? 'مخصص' : 'Custom', 
+                color: 'bg-[#D4AF37] text-[#1a1a2e]',
+                desc: isAr ? 'ملكية المنطقة' : 'Zone Ownership'
+              },
+              { 
+                name: isAr ? 'فضي' : 'Silver', 
+                price: isAr ? '١٠K+ ر.س' : '10K+ SAR', 
+                color: 'bg-gray-200 text-[#5A4A2A]',
+                desc: isAr ? 'علامة النشاط' : 'Activation Brand'
+              },
+              { 
+                name: isAr ? 'شريك محلي' : 'Local Partner', 
+                price: isAr ? '٥K+ ر.س' : '5K+ SAR', 
+                color: 'bg-[#F4E4C1] text-[#5A4A2A]',
+                desc: isAr ? 'تركيز على التحويل' : 'Conversion Focus'
+              },
             ].map((tier, i) => (
               <StaggerItem key={i}>
                 <HoverLift className={`${tier.color} p-6 rounded-xl shadow-lg text-center`}>
                   <h3 className="text-xl font-bold mb-2">{tier.name}</h3>
-                  <p className="text-sm opacity-90 mb-4">{tier.price}</p>
+                  <p className="text-2xl font-black text-[#D4AF37] mb-2">{tier.price}</p>
+                  <p className="text-sm opacity-90 mb-4">{tier.desc}</p>
                   <Link href={`/${locale}/sponsors`} className="text-sm font-bold underline hover:opacity-80">
                     {isAr ? 'المزيد' : 'Details'}
                   </Link>
@@ -219,7 +282,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               <div className="font-bold text-xl">نبض الأحساء</div>
               <span className="hidden md:inline text-[#D4AF37]">|</span>
               <div className="text-sm text-[#E8E0D4]">
-                {isAr ? 'الموقع بواسطة' : 'Website by'} <a href="https://nexaro.tech" target="_blank" className="text-[#D4AF37] font-bold hover:underline">Nexaro.tech</a>
+                {isAr ? 'الموقع بواسطة' : 'Website by'} <a href="https://project-jelc4.vercel.app" target="_blank" className="text-[#D4AF37] font-bold hover:underline">Nexaro.tech</a>
                 <span className="mx-2">|</span>
                 {isAr ? 'الفعالية بواسطة' : 'Event by'} <span className="font-bold">The Vicious Esports</span>
               </div>
